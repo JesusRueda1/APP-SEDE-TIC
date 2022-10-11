@@ -1,5 +1,5 @@
 <?php
-require('conexion/conexion.php');
+require('../conexion/conexion.php');
 session_start();
 $user = $_POST['username'];
 $pass = $_POST['password'];
@@ -11,10 +11,10 @@ if(!$user==""){
         if(password_verify($pass2, $password)){
             /* Codigo para entrar */
         
-            $SQL = "SELECT * FROM persona WHERE persona.`contraseña`='".$password."' AND persona.`documento`=".$user.";";
+            $SQL = "SELECT * FROM persona WHERE persona.`contraseña`='".$pass."' AND persona.`documento`=".$user.";";
             $query = mysqli_query($conexion,$SQL);
             
-            while($row == mysqli_fetch_array($query)){
+            while($row = mysqli_fetch_array($query)){
                 $id = $row['id'];
                 $rol = $row['rol'];
                 $name = $row['nombre'];
@@ -22,10 +22,10 @@ if(!$user==""){
             $_SESSION['name'] = $name;
         }
 
-        if($rol === 1){
-            header('location: admin.php');
-        }else if($rol === 2){
-            header('location: standar.php');
+        if($rol == 1){
+            header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php');
+        }else if($rol == 2){
+            /* header('location: standar.php') */;
         }else{
             echo "
             <script>
