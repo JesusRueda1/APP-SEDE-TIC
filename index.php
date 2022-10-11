@@ -13,8 +13,8 @@
     <form method="post" action="php/ingreso.php">
        
     <div class="container">
-            <div class="text-center">
-                <img src="img/sena.png">
+            <div class="text-center" style="margin-bottom:1.5%">
+                <img src="img/icon_page.png">
             </div>
         <div class="row">
                 <div class="col-md-6 col-md-offset-3">
