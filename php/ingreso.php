@@ -17,7 +17,9 @@ if(!$user==""){
             while($row == mysqli_fetch_array($query)){
                 $id = $row['id'];
                 $rol = $row['rol'];
+                $name = $row['nombre'];
             }
+            $_SESSION['name'] = $name;
         }
 
         if($rol === 1){
