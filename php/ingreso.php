@@ -7,7 +7,7 @@ if(!$user=="" && !$pass==""){
     $SQL = "SELECT * FROM persona 
     WHERE documento=".$user.""; 
     $query = mysqli_query($conexion,$SQL);
-    if($query == TRUE){
+    if($query){
         while($row = mysqli_fetch_array($query)){
             $id = $row['id']; 
             $rol = $row['rol']; 

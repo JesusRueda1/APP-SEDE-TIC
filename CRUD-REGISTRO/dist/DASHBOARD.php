@@ -1,3 +1,7 @@
+<?php 
+session_start();
+$nombreCompleto = $_SESSION['nombre']." ".$_SESSION['apellido'];
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -41,7 +45,7 @@
                             <div class="sb-sidenav-menu-heading" style="color: white;">Core</div>
                             <a style="color: white;" class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon" style="color: white;"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+                                Dashboard 
                             </a>
                             <div class="sb-sidenav-menu-heading" style="color: white;">Interface</div>
                             <a style="color: white;" class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -98,11 +102,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Conectado como:</div>
-                        <?php  
-                            session_start();
-                            echo $_SESSION['nombre']." ".$_SESSION['apellido']."."
-                        ?>
+                        <div class="small">Conectado como: <?php echo $nombreCompleto; ?></div>
                     </div>
                 </nav>
             </div>
@@ -136,7 +136,7 @@
                               <th>Articulo</th>
                               <th>Datos-Entrada</th>
                               <th>Datos-Salida</th>
-                              <th></th>
+                              <th>Accion</th>
                             
                             </tr>
                           </thead>
