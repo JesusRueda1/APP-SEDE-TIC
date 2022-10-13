@@ -31,7 +31,7 @@ $nombreCompleto = $_SESSION['nombre']." ".$_SESSION['apellido'];
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Configuración</a></li> 
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="../../index.php">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="../../php/cerrar_sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -102,7 +102,7 @@ $nombreCompleto = $_SESSION['nombre']." ".$_SESSION['apellido'];
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Conectado como: <?php echo $nombreCompleto; ?></div>
+                        <div class="standar">Conectado como: <br> <?php echo $nombreCompleto."."; ?></div>
                     </div>
                 </nav>
             </div>
@@ -196,7 +196,7 @@ $nombreCompleto = $_SESSION['nombre']." ".$_SESSION['apellido'];
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
+                        <div class="d-flex align-items-center justify-content-between standar">
                             <div class="text-muted">Copyright &copy; Your Website 2022</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
