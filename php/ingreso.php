@@ -1,6 +1,7 @@
 <?php
 require('../conexion/conexion.php');
 session_start();
+$_SESSION['login'] = true;
 $user = $_POST['username']; 
 $pass = $_POST['password']; 
 if(!$user=="" && !$pass==""){
@@ -23,7 +24,7 @@ if(!$user=="" && !$pass==""){
                 $_SESSION['id'] = $id;
                 $_SESSION['nombre'] = $name;
                 $_SESSION['apellido'] = $apellido;
-                
+
                 switch ($rol) {
                     case 1:
                         header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php');

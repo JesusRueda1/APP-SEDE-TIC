@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $nombreCompleto = $_SESSION['nombre']." ".$_SESSION['apellido'];
+include('../../php/validar_sesion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">

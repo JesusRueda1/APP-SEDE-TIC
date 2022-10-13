@@ -1,8 +1,5 @@
 <?php
-session_start();
-
-$login = $_SESSION['login'];
-if (isset($login)== true){
-//codigo normal
+if (!isset($_SESSION['login']) && $_SESSION['login'] == null){
+    header('location:../../index.php');
 }
 ?>
