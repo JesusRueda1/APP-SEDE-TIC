@@ -26,6 +26,7 @@ CREATE TABLE `articulo` (
   `articulo` varchar(50) COLLATE utf32_spanish_ci NOT NULL,
   `datos_entrada` time NOT NULL,
   `datos_salida` time DEFAULT NULL,
+  `observaciones` text COLLATE utf32_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_persona` (`id_persona`),
   CONSTRAINT `articulo_ibfk_1` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id`)
@@ -43,7 +44,7 @@ CREATE TABLE `persona` (
   `nombre` varchar(50) COLLATE utf32_spanish_ci NOT NULL,
   `apellido` varchar(50) COLLATE utf32_spanish_ci NOT NULL,
   `correo` varchar(50) COLLATE utf32_spanish_ci NOT NULL,
-  `contraseña` varchar(150) COLLATE utf32_spanish_ci NOT NULL,
+  `contraseña` varchar(150) COLLATE utf32_spanish_ci DEFAULT NULL,
   `rol` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `rol` (`rol`),
