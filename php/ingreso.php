@@ -1,52 +1,66 @@
 <?php
 require('../conexion/conexion.php');
 session_start();
-$user = $_POST['username'];
-$pass = $_POST['password'];
-$pass2 = $pass;
-
-$password = password_hash($pass, PASSWORD_DEFAULT);
-if(!$user==""){
-    if(!$pass==""){
-        if(password_verify($pass2, $password)){
-            /* Codigo para entrar */
+$user = $_POST['username']; 
+$pass = $_POST['password']; 
+if(!$user=="" && !$pass==""){
+    $SQL = "SELECT * FROM persona 
+    WHERE documento=".$user.""; 
+    $query = mysqli_query($conexion,$SQL);
+    if($query == TRUE){
+        while($row = mysqli_fetch_array($query)){
+            $id = $row['id']; 
+            $rol = $row['rol']; 
+            $name = $row['nombre']; 
+            $apellido = $row['apellido']; 
+            $pass2 = $row['contraseña'];
+        }
         
-            $SQL = "SELECT * FROM persona WHERE persona.`contraseña`='".$pass."' AND persona.`documento`=".$user.";";
-            $query = mysqli_query($conexion,$SQL);
+
+            if(password_verify($pass, $pass2)){
+                // Codigo para entrar 
             
-            while($row = mysqli_fetch_array($query)){
-                $id = $row['id'];
-                $rol = $row['rol'];
-                $name = $row['nombre'];
+                $_SESSION['id'] = $id;
+                $_SESSION['nombre'] = $name;
+                $_SESSION['apellido'] = $apellido;
+                
+                switch ($rol) {
+                    case 1:
+                        header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php');
+                        break;
+                    case 2:
+                        //header('location: standar.php'); 
+                        break;
+                    case 3:
+                        // header('location: tercerrol.php'); 
+                        break;
+                    default:
+                        echo "
+                        <script>
+                            alert('Error: no tiene rol asignado, comuniquese con el administrador!');
+                        </script>    
+                        ";
+                        break;
+                }
+            }else{
+                echo "
+                    <script>
+                        alert('Contraseña incorrecta, intente nuevamente!!');
+                        location.href='../index.php';
+                    </script>
+                    ";
             }
-            $_SESSION['name'] = $name;
-        }
-
-        if($rol == 1){
-            header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php');
-        }else if($rol == 2){
-            /* header('location: standar.php') */;
-        }else{
-            echo "
-            <script>
-                alert('Error: no tiene rol asignado, comuniquese con el administrador!');
-            </script>    
-            ";
-        }
-        
-        $_SESSION['id'] = $id;
     }else{
         echo "
         <script>
-            alert('Error: Ingrese su contraseña');
-        </script>
-        ";
+            alert('El usuario no existe en el sistema');
+        </script>";
     }
 }else{
     echo "
     <script>
-        alert('Error: Ingrese su usuario');
-    </script>";
+        alert('Error: Los campos están vacios, llene todos los campos para ingresar!!');
+    </script>"; 
 }
 
 ?>

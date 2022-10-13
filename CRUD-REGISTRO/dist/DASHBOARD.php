@@ -25,10 +25,9 @@
                 <li class="nav-item dropdown" style="margin-left:1700px;">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!">Configuración</a></li> 
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="../../index.php">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>
@@ -99,8 +98,11 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        <?php include('php/include/userName.php');?>
+                        <div class="small">Conectado como:</div>
+                        <?php  
+                            session_start();
+                            echo $_SESSION['nombre']." ".$_SESSION['apellido']."."
+                        ?>
                     </div>
                 </nav>
             </div>
@@ -167,9 +169,6 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="articulo">Articulo</label> <input type="text" id="articulo" placeholder="Escriba aqui" required class="form-control">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="dEntrada">Hora-Entrada</label> <input type="text" id="dEntrada" placeholder="Escriba aqui" required class="form-control">
                             </div>
                             <div class="col-md-3">
                                 <label for="dSalida">Hora-Salida</label> <input type="time" id="dSalida" placeholder="Escriba aqui" required class="form-control">
