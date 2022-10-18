@@ -27,7 +27,8 @@ if(!$user=="" && !$pass==""){
 
                 switch ($rol) {
                     case 1:
-                        header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php');
+                        //header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php');
+                        header('location: ../administrador/CRUD.php');
                         break;
                     case 2:
                         //header('location: standar.php'); 
@@ -39,6 +40,7 @@ if(!$user=="" && !$pass==""){
                         echo "
                         <script>
                             alert('Error: no tiene rol asignado, comuniquese con el administrador!');
+                            location.href='../index.php';
                         </script>    
                         ";
                         break;
@@ -55,12 +57,14 @@ if(!$user=="" && !$pass==""){
         echo "
         <script>
             alert('El usuario no existe en el sistema');
+            location.href='../index.php';
         </script>";
     }
 }else{
     echo "
     <script>
         alert('Error: Los campos están vacios, llene todos los campos para ingresar!!');
+        location.href='../index.php';
     </script>"; 
 }
 

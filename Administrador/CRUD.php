@@ -59,7 +59,8 @@
            
           </tbody>
       </table>
-      <a class="btn btn-primary" href="../portafolio.php" role="button">Ir a la Pagina Principal</a>
+      <button class="btn btn-primary">Agregar usuario</button>
+      <a class="btn btn-primary" href="../crud-registro/dist/dashboard.php" role="button">Ir a la Pagina Principal</a>
     </div>
 
   
