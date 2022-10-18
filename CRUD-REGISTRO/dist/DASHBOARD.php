@@ -17,6 +17,7 @@ include('../../php/validar_sesion.php');
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="../../bootstrap.trabajo/css/bootstrap.css">
+        <link rel="stylesheet" href="../../data-table/datatables.min.css">
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -112,21 +113,27 @@ include('../../php/validar_sesion.php');
                 <figure class="logo">
                   <img src="images/icon_page.png" height="60" alt="Logo de la pagina" />
                 </figure>
-                  <nav class="menu">
-                    <ol>
-                      <li>
-                        <a class="link" href="#footer">Acerca de</a>
-                      </li>
-                      <li>
-                        <a class="link" href="#header">CRUD</a>
-                      </li>
-                    </ol>
-                  </nav>
+                  
               </header>
             <br/>
+            
                     <form onsubmit="event.preventDefault();onSubmit();" autocomplete="off">
                       <div class="tablita">
-                        <table class="tabla" id="tabla">
+                          <table class="tabla" id="tabla">
+                            <div class="container-fluid" style="padding:0;margin:0;"> 
+                                    <div class="row form-group">
+                                        <form action="">
+                                                <div class="col-lg-2">
+                                                    <label for=""class="form-label">Buscar:</label>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <input type="text" class="form-input"placeholder="Buscar">
+                                                </div>
+                                                <div class="col-2">
+                                                    <button class="form-button btn-primary">Buscar</button>
+                                                </div>
+                                            </form>
+                            </div>
                           <thead>
                             <tr> 
                               <th>Nombre</th> 
@@ -142,13 +149,12 @@ include('../../php/validar_sesion.php');
                             </tr>
                           </thead>
                             <tbody>
-              
+                            
                             </tbody>
                         </table>
                       </div>
                       <br/>
                       <br/>
-                      <div class="container"> 
                       <div class="caja">
                         <div class="row">
                             <div class="col-md-3">
@@ -170,6 +176,9 @@ include('../../php/validar_sesion.php');
                             </div>
                             <div class="col-md-3">
                                 <label for="articulo">Articulo</label> <input type="text" id="articulo" placeholder="Escriba aqui" required class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="dEntrada">Hora-Entrada</label> <input type="time" id="dEntrada" placeholder="Escriba aqui" required class="form-control">
                             </div>
                             <div class="col-md-3">
                                 <label for="dSalida">Hora-Salida</label> <input type="time" id="dSalida" placeholder="Escriba aqui" required class="form-control">
@@ -217,5 +226,6 @@ include('../../php/validar_sesion.php');
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script src="../../data-table/datatables.min.js"></script>
     </body>
 </html>

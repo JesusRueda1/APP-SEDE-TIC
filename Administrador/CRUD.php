@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="../bootstrap.trabajo/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Registrarse</h1>
-    <div class="container">
-        <form action="" method="post">
+  
+    <div class="container" style="margin-top:15%;">
+    <h1>Registro de usuarios</h1>
+      <div class="col-sm-12 col-sm-offset-2">
+    <!-- <a href="#addnew" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal1"><span class="glyphicon glyphicon-plus"></span> Nuevo Usuario</a> -->
+      
 
-        </form>
-    </div>
-    <div class="container">
+      
+    
     <table class="table table-hover ">
         <thead>
             <tr>
@@ -51,21 +53,38 @@
               }
               ?>
               <td><?php echo $roles ?></td>
-              <td><button type="submit" method="post" class="btn btn-primary">Actualizar</button></td>
+              <td>
+                <a href="#edit_<?php echo $id ?>" class="btn btn-success " data-bs-toggle="modal" ><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                <a href="#delete_<?php echo $id ?>" class="btn btn-danger" data-bs-toggle="modal"> <span class="glyphicon glyphicon-trash"></span> Borrar</a>
+              </td>
+              <?php //include('include/BorrarEditarModal.php')?>
             </tr>
             <?php
             }
             ?>
            
           </tbody>
+          
       </table>
-      <button class="btn btn-primary">Agregar usuario</button>
+      <!-- <button class="btn btn-primary">Agregar usuario</button> -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Insertar Registro
+      </button>
       <a class="btn btn-primary" href="../crud-registro/dist/dashboard.php" role="button">Ir a la Pagina Principal</a>
+      </div>
     </div>
 
   
     
-
+    <?php include('include/modal.php');//include('include/AgregarModal.php');?>
     <script src="../bootstrap.trabajo/js/bootstrap.min.js"></script>
+    <script>
+      const myModal = document.getElementById('myModal')
+      const myInput = document.getElementById('myInput')
+
+      myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+      })
+    </script>
 </body>
 </html>
