@@ -155,6 +155,7 @@ include('../../php/validar_sesion.php');
                           </thead>
                             <tbody><?php include('php/consultas.php'); 
                             while($row = mysqli_fetch_array($query)){?>
+                            <tr>
                             <td><?php echo $row['nombre'];?></td>
                             <td><?php echo $row['apellido']; ?></td>
                             <td><?php echo $row['documento'];?></td>
@@ -183,10 +184,13 @@ include('../../php/validar_sesion.php');
                             <td><?php echo $row['fecha'];?></td>
                             <td><?php echo $row['datos_entrada'];?></td>
                             <td><?php echo $row['datos_salida'];?></td>
-                            <td>
-                                <input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
-                                <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" >
-                            </td>
+                            
+                                <td>
+                                    <input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
+                                    <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar"style="background-color:red;" >
+                                </td>
+
+                            </tr>
                             <?php }?>
                             </tbody>
                         </table>
@@ -230,14 +234,13 @@ include('../../php/validar_sesion.php');
                                 <textarea name="obs" id="obs" cols="28" rows="5" placeholder="Escriba aqui" required class="form-control"></textarea>
                             </div>
                         </div>
-                    
-                    </div>
+                      </div>
                       <br/>
                       <input class="submit" type="submit" value="Escribir">
-                      </form>
+                    </form>
                 <br/>
                 <br/>
-                </div>
+            </div>
            <footer class="footer" id="footer">
              
            </footer>
@@ -282,7 +285,6 @@ include('../../php/validar_sesion.php');
         // Initialize the DataTable
         $(document).ready(function () {
             $('#example').DataTable({
-
                 // Enable the searching
                 // of the DataTable
                 searching: true
