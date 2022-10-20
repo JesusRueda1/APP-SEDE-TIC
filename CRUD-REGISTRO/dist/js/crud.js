@@ -21,7 +21,7 @@ function Leer() {
     return DataForm
 }
 function InsertarDatos(data) {
-    let table = document.getElementById("tabla").getElementsByTagName('tbody')[0]
+    let table = document.getElementById("example").getElementsByTagName('tbody')[0]
     let Fila = table.insertRow(table.length)
     columna1 = Fila.insertCell(0).innerHTML = data.nom
     columna2 = Fila.insertCell(1).innerHTML = data.ape
@@ -72,7 +72,7 @@ function Actualizar(DataForm) {
 function Borrarr(td) {
     if (confirm('¿Seguro de borrar este registro?')) {
         row = td.parentElement.parentElement
-        document.getElementById("tabla").deleteRow(row.rowIndex)
+        document.getElementById("example").deleteRow(row.rowIndex)
         Vaciar()
     }
 }

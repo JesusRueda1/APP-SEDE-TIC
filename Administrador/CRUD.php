@@ -46,10 +46,22 @@
               <td><?php echo $mostrar['apellido'] ?></td>
               <td><?php echo $mostrar['correo'] ?></td>
               <?php 
-              if($mostrar['rol'] ==1){
-                $roles = "Administrador";
-              }else if ($mostrar['rol']==2){
-                $roles = "Vigilante";
+              $rol = $mostrar['rol'];
+              switch ($rol) {
+                case 1:
+                  $roles = "Administrador";
+                  break;
+                case 2:
+                  $roles = "Vigilante";
+                  break;
+                case 3:
+                  $roles = "Instructor";
+                  break;
+                case 4:
+                  $roles = "Aprendiz";
+                default:
+                  $roles = "Visitante";
+                  break;
               }
               ?>
               <td><?php echo $roles ?></td>

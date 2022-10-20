@@ -17,10 +17,25 @@ include('../../php/validar_sesion.php');
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="../../bootstrap.trabajo/css/bootstrap.css">
-        <link rel="stylesheet" href="../../data-table/datatables.min.css">
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+        <!-- jQuery -->
+    <script type="text/javascript" 
+        src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+  
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href=
+"https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+  
+    <!-- DataTables JS -->
+    <script src=
+"https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js">
+    </script>
     </head>
     <body class="sb-nav-fixed">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #57a639;">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="index.html" style="color: white;">Logo</a>
@@ -117,22 +132,11 @@ include('../../php/validar_sesion.php');
               </header>
             <br/>
             
-                    <form onsubmit="event.preventDefault();onSubmit();" autocomplete="off">
-                      <div class="tablita">
-                          <table class="tabla" id="tabla">
+            <div class="tablita">
+                    <form action="php/agregar.php" method="POST"><!-- onsubmit="event.preventDefault();onSubmit();" autocomplete="off"-->                          
+                        <table class="tabla" id="example">
                             <div class="container-fluid" style="padding:0;margin:0;"> 
                                     <div class="row form-group">
-                                        <form action="">
-                                                <div class="col-lg-2">
-                                                    <label for=""class="form-label">Buscar:</label>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <input type="text" class="form-input"placeholder="Buscar">
-                                                </div>
-                                                <div class="col-2">
-                                                    <button class="form-button btn-primary">Buscar</button>
-                                                </div>
-                                            </form>
                             </div>
                           <thead>
                             <tr> 
@@ -142,14 +146,48 @@ include('../../php/validar_sesion.php');
                               <th>Correo</th>
                               <th>Rol</th>
                               <th>Articulo</th>
+                              <th>Fecha</th>
                               <th>Datos-Entrada</th>
                               <th>Datos-Salida</th>
                               <th>Accion</th>
                             
                             </tr>
                           </thead>
-                            <tbody>
-                            
+                            <tbody><?php include('php/consultas.php'); 
+                            while($row = mysqli_fetch_array($query)){?>
+                            <td><?php echo $row['nombre'];?></td>
+                            <td><?php echo $row['apellido']; ?></td>
+                            <td><?php echo $row['documento'];?></td>
+                            <td><?php echo $row['correo'];?></td>
+                            <td><?php 
+                            $rol = $row['rol']; 
+                            switch ($rol) {
+                                case 1:
+                                    echo "administrador";
+                                    break;
+                                case 2:
+                                    echo "vigilante";
+                                    break;
+                                case 3:
+                                    echo "instructor";
+                                    break;
+                                case 4:
+                                    echo "aprendiz";
+                                    break;
+                                
+                                default:
+                                    echo "visitante";
+                                    break;
+                            }?></td>
+                            <td><?php echo $row['articulo'];?></td>
+                            <td><?php echo $row['fecha'];?></td>
+                            <td><?php echo $row['datos_entrada'];?></td>
+                            <td><?php echo $row['datos_salida'];?></td>
+                            <td>
+                                <input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
+                                <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar" >
+                            </td>
+                            <?php }?>
                             </tbody>
                         </table>
                       </div>
@@ -158,30 +196,38 @@ include('../../php/validar_sesion.php');
                       <div class="caja">
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="nom">Nombre</label> <input type="text" id="nom" placeholder="Escriba aqui" required class="form-control ">
+                                <label for="nom">Nombre</label> <input type="text" id="nom" name="nom" placeholder="Escriba aqui" required class="form-control ">
                             </div>
                             <div class="col-md-3">
-                                <label for="ape">Apellido</label> <input type="text" id="ape" placeholder="Escriba aqui" required class="form-control ">
+                                <label for="ape">Apellido</label> <input type="text" id="ape" name="ape" placeholder="Escriba aqui" required class="form-control ">
                             </div>
                             <div class="col-md-3">
-                                <label for="doc">Documento</label> <input type="text" id="doc" placeholder="Escriba aqui" required class="form-control ">
+                                <label for="doc">Documento</label> <input type="text" id="doc" name="doc" placeholder="Escriba aqui" required class="form-control ">
                             </div>
                             <div class="col-md-3">
-                                <label for="mail">Correo</label> <input type="text" id="mail" placeholder="Escriba aqui" required class="form-control ">
+                                <label for="mail">Correo</label> <input type="mail" id="mail" name="mail" placeholder="Escriba aqui" required class="form-control ">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="rol">Rol</label> <input type="text" id="rol" placeholder="Escriba aqui" required class="form-control">
+                                
+                                <label for="rol">Rol</label> 
+                                <?php 
+                                $SQL3 = "SELECT * FROM roles";
+                                $query3= mysqli_query($conexion,$SQL3);?>
+                                <select name="rol" id="rol" required class="form-control">
+                                    <option value="">Selecione una opcion...</option>
+                                    <?php while($row = mysqli_fetch_array($query3)){?>
+                                        <option value="<?php echo $row['id']; ?>"><?php  echo $row['descripcion']; ?></option>
+                                        <?php } ?>
+                                    </select>
                             </div>
                             <div class="col-md-3">
-                                <label for="articulo">Articulo</label> <input type="text" id="articulo" placeholder="Escriba aqui" required class="form-control">
+                                <label for="articulo">Articulo</label> <input type="text" id="articulo" name="articulo" placeholder="Escriba aqui" required class="form-control">
                             </div>
                             <div class="col-md-3">
-                                <label for="dEntrada">Hora-Entrada</label> <input type="time" id="dEntrada" placeholder="Escriba aqui" required class="form-control">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="dSalida">Hora-Salida</label> <input type="time" id="dSalida" placeholder="Escriba aqui" required class="form-control">
+                                <label for="obs">Observaciones</label>
+                                <textarea name="obs" id="obs" cols="28" rows="5" placeholder="Escriba aqui" required class="form-control"></textarea>
                             </div>
                         </div>
                     
@@ -205,11 +251,13 @@ include('../../php/validar_sesion.php');
 
                 </main>
                 <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
+                    <div class="container px-4">
                         <div class="d-flex align-items-center justify-content-between standar">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                            <div class="text-muted">Copyright &copy; Hecho por Jesús Rueda y Jesús Mosquera</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">SENA</a>
                                 &middot;
                                 <a href="#">Terms &amp; Conditions</a>
                             </div>
@@ -227,5 +275,19 @@ include('../../php/validar_sesion.php');
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
         <script src="../../data-table/datatables.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        // Initialize the DataTable
+        $(document).ready(function () {
+            $('#example').DataTable({
+
+                // Enable the searching
+                // of the DataTable
+                searching: true
+            });
+        });
+    </script> 
     </body>
 </html>
