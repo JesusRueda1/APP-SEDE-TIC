@@ -134,7 +134,6 @@ include('../../php/validar_sesion.php');
             <br/>
             
             <div class="tablita">
-            <form action="php/agregar.php" method="POST"><!-- onsubmit="event.preventDefault();onSubmit();" autocomplete="off"-->                          
                         <table class="tabla" id="example">
                             <div class="container-fluid" style="padding:0;margin:0;"> 
                                     <div class="row form-group">
@@ -197,18 +196,36 @@ include('../../php/validar_sesion.php');
                         </table>
                       </div>
                       <br/>
+                      <?php ?>
+                      <input class="submit" type="submit" value="Abrir" data-bs-toggle="modal" data-bs-target="#exampleModal">
                       <div class="containter-fluid">
-                            <form onclick="ejecutar()">
-
-                            </form>
+                            <form onclick="ejecutar()" method="POST">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <input type="text" placeholder="Documento" name="document">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <input type="submit" value="Buscar">
+                                    </div>
+                                </div>
+                            </form><br>
                             <script>
                                 function ejecutar(){
-                                    
+                                    <?php $doc =  $_POST['document']; ?>;
+                                    <?php  
+                                    if (!$doc === "") {
+                                        $sql4 = "SELECT * FROM articulo INNER JOIN persona on articulo.id_persona=persona.id WHERE persona.documento=$doc";
+                                        $query4 = mysqli_query($conexion,$sql4);
+                                        if($query){
+
+                                        }
+                                    }
+                                    ?>
                                 }
+
+                                
                             </script>
                       </div>
-                      <?php ?>
-                    <input class="submit" type="submit" value="Abrir" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Insertar Registro
                     </button> -->
