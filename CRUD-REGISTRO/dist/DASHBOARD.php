@@ -210,16 +210,16 @@ include('../../php/validar_sesion.php');
                                 </div>
                             </form><br>
                             <script>
-                                function ejecutar(){
-                                    <?php $doc =  $_POST['document']; ?>;
-                                    <?php  
+                                let ajax = function ejecutar(){
+
+                                    <?php /* $doc =  $_POST['document']; 
                                     if (!$doc === "") {
                                         $sql4 = "SELECT * FROM articulo INNER JOIN persona on articulo.id_persona=persona.id WHERE persona.documento=$doc";
                                         $query4 = mysqli_query($conexion,$sql4);
                                         if($query){
 
                                         }
-                                    }
+                                    } */
                                     ?>
                                 }
 
