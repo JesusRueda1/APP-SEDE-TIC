@@ -19,6 +19,7 @@ include('../../php/validar_sesion.php');
         <link rel="stylesheet" href="../../bootstrap.trabajo/css/bootstrap.css">
         <!-- <link rel="stylesheet" href="modal/modal.css"> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- jQuery -->
     <script type="text/javascript" 
         src="https://code.jquery.com/jquery-3.5.1.js">
@@ -199,32 +200,19 @@ include('../../php/validar_sesion.php');
                       <?php ?>
                       <input class="submit" type="submit" value="Abrir" data-bs-toggle="modal" data-bs-target="#exampleModal">
                       <div class="containter-fluid">
-                            <form onclick="ejecutar()" method="POST">
+                            <form method="POST">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <input type="text" placeholder="Documento" name="document">
+                                        <input type="text" placeholder="Documento" name="document" id="document">
+                                        
                                     </div>
                                     <div class="col-lg-2">
-                                        <input type="submit" value="Buscar">
+                                        <button type="button" id="buscar" onclick="ejecutar()" data-bs-toggle="modal" data-bs-target="#exampleModal">Buscar</button>
                                     </div>
+                                    <div id="mostrar"></div>
                                 </div>
                             </form><br>
-                            <script>
-                                let ajax = function ejecutar(){
-
-                                    <?php /* $doc =  $_POST['document']; 
-                                    if (!$doc === "") {
-                                        $sql4 = "SELECT * FROM articulo INNER JOIN persona on articulo.id_persona=persona.id WHERE persona.documento=$doc";
-                                        $query4 = mysqli_query($conexion,$sql4);
-                                        if($query){
-
-                                        }
-                                    } */
-                                    ?>
-                                }
-
-                                
-                            </script>
+                            
                       </div>
                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Insertar Registro
@@ -267,6 +255,7 @@ include('../../php/validar_sesion.php');
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         
+        
         <script>
             /* const open = document.getElementById('open');
             const modal_container = document.getElementById('modal_container');
@@ -296,6 +285,47 @@ include('../../php/validar_sesion.php');
             });
         });
     </script> 
-    <?php include('modal/modal.php');?>
+    <?php //include('modal/modal.php');?>
+    <script>
+                                function ejecutar(){
+
+                                    let doc = $('#document').val();
+
+                                    
+                                    var parametros = 
+                                        {
+                                            "documento" : doc,
+                                        };
+                                        alert(`el documento es ${doc}`);
+
+                                        $.ajax({
+                                            data: parametros,
+                                            url: 'php/codigo_php.php',
+                                            type: 'POST',
+                                            
+                                            beforesend: function()
+                                            {
+                                            $('#mostrar').html("Mensaje antes de Enviar");
+                                            },
+
+                                            success: function(mensaje)
+                                            {
+                                            $('#mostrar').html(mensaje);
+                                            }
+                                        });
+
+                                    <?php /* $doc =  $_POST['document']; 
+                                    if (!$doc === "") {
+                                        $sql4 = "SELECT * FROM articulo INNER JOIN persona on articulo.id_persona=persona.id WHERE persona.documento=$doc";
+                                        $query4 = mysqli_query($conexion,$sql4);
+                                        if($query){
+
+                                        }
+                                    } */
+                                    ?>
+                                }
+
+                                
+                            </script>
     </body>
 </html>
