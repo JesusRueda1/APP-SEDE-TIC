@@ -38,6 +38,7 @@
                 $sql= "SELECT * FROM persona";
                 $query = mysqli_query($conexion,$sql);
                 while($mostrar = mysqli_fetch_array($query)){
+                  $id = $mostrar['id'];
               ?>
             <tr>
               <th scope="row"><?php echo $mostrar['id'] ?></th>

@@ -17,6 +17,7 @@ include('../../php/validar_sesion.php');
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="../../bootstrap.trabajo/css/bootstrap.css">
+        <!-- <link rel="stylesheet" href="modal/modal.css"> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
         <!-- jQuery -->
     <script type="text/javascript" 
@@ -65,14 +66,14 @@ include('../../php/validar_sesion.php');
                                 Dashboard 
                             </a>
                             <div class="sb-sidenav-menu-heading" style="color: white;">Interface</div>
-                            <a style="color: white;" class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a style="color: white;" class="nav-link collapsed" href="modal/modal.php" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon" style="color: white;"><i class="fas fa-columns"></i></div>
-                                Layouts
+                               modales
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html" style="color: white;">Static Navigation</a>
+                                    <a class="nav-link" href="modal/modal.php" style="color: white;">Modal</a>
                                     <a class="nav-link" href="layout-sidenav-light.html" style="color: white;">Light Sidenav</a>
                                 </nav>
                             </div>
@@ -133,7 +134,7 @@ include('../../php/validar_sesion.php');
             <br/>
             
             <div class="tablita">
-                    <form action="php/agregar.php" method="POST"><!-- onsubmit="event.preventDefault();onSubmit();" autocomplete="off"-->                          
+            <form action="php/agregar.php" method="POST"><!-- onsubmit="event.preventDefault();onSubmit();" autocomplete="off"-->                          
                         <table class="tabla" id="example">
                             <div class="container-fluid" style="padding:0;margin:0;"> 
                                     <div class="row form-group">
@@ -196,62 +197,29 @@ include('../../php/validar_sesion.php');
                         </table>
                       </div>
                       <br/>
-                      <br/>
-                      <div class="caja">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="nom">Nombre</label> <input type="text" id="nom" name="nom" placeholder="Escriba aqui" required class="form-control ">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="ape">Apellido</label> <input type="text" id="ape" name="ape" placeholder="Escriba aqui" required class="form-control ">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="doc">Documento</label> <input type="text" id="doc" name="doc" placeholder="Escriba aqui" required class="form-control ">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="mail">Correo</label> <input type="mail" id="mail" name="mail" placeholder="Escriba aqui" required class="form-control ">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                
-                                <label for="rol">Rol</label> 
-                                <?php 
-                                $SQL3 = "SELECT * FROM roles";
-                                $query3= mysqli_query($conexion,$SQL3);?>
-                                <select name="rol" id="rol" required class="form-control">
-                                    <option value="">Selecione una opcion...</option>
-                                    <?php while($row = mysqli_fetch_array($query3)){?>
-                                        <option value="<?php echo $row['id']; ?>"><?php  echo $row['descripcion']; ?></option>
-                                        <?php } ?>
-                                    </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="articulo">Articulo</label> <input type="text" id="articulo" name="articulo" placeholder="Escriba aqui" required class="form-control">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="obs">Observaciones</label>
-                                <textarea name="obs" id="obs" cols="28" rows="5" placeholder="Escriba aqui" required class="form-control"></textarea>
-                            </div>
-                        </div>
+                      <div class="containter-fluid">
+                            <form onclick="ejecutar()">
+
+                            </form>
+                            <script>
+                                function ejecutar(){
+                                    
+                                }
+                            </script>
                       </div>
-                      <br/>
-                      <input class="submit" type="submit" value="Escribir">
-                    </form>
-                <br/>
-                <br/>
-            </div>
+                      <?php ?>
+                    <input class="submit" type="submit" value="Abrir" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Insertar Registro
+                    </button> -->
            <footer class="footer" id="footer">
              
            </footer>
 
           <script type="text/javascript" src="js/crud.js"></script>
+          
         </div>
     </div>
-
-
-
-
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container px-4">
@@ -281,6 +249,26 @@ include('../../php/validar_sesion.php');
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        
+        <script>
+            /* const open = document.getElementById('open');
+            const modal_container = document.getElementById('modal_container');
+            const close = document.getElementById('close');
+            open.addEventListener('click', () => {
+              modal_container.classList.add('show');  
+            });
+            close.addEventListener('click', () => {
+              modal_container.classList.remove('show');
+            });  */
+            
+      const myModal = document.getElementById('myModal')
+      const myInput = document.getElementById('myInput')
+
+      myModal.addEventListener('shown.bs.modal', () => {
+      myInput.focus()
+        })
+        </script>
+        
     <script>
         // Initialize the DataTable
         $(document).ready(function () {
@@ -291,5 +279,6 @@ include('../../php/validar_sesion.php');
             });
         });
     </script> 
+    <?php include('modal/modal.php');?>
     </body>
 </html>
