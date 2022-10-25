@@ -130,11 +130,14 @@ include('../../php/validar_sesion.php');
                 <figure class="logo">
                   <img src="images/icon_page.png" height="60" alt="Logo de la pagina" />
                 </figure>
+                <h3 class="text-start">Registro de articulos</h3>
                   
               </header>
             <br/>
             
+            
             <div class="tablita">
+                
                         <table class="tabla" id="example">
                             <div class="container-fluid" style="padding:0;margin:0;"> 
                                     <div class="row form-group">
@@ -187,8 +190,8 @@ include('../../php/validar_sesion.php');
                             <td><?php echo $row['datos_salida'];?></td>
                             
                                 <td>
-                                    <input class="submit" type="button" onClick="Editarr(this)" value="Editar" >
-                                    <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar"style="background-color:red;" >
+                                    <input class="submit" type="button" onClick="Editarr(this)" value="Editar" style="border-radius:10px;" >
+                                    <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;" >
                                 </td>
 
                             </tr>
@@ -198,7 +201,7 @@ include('../../php/validar_sesion.php');
                       </div>
                       <br/>
                       <?php ?>
-                      <input class="submit" type="submit" value="Abrir" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <input class="submit" type="submit" value="Abrir" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-radius:10px;">
                       <div class="containter-fluid">
                             <form method="POST">
                                 <div class="row">
@@ -214,6 +217,10 @@ include('../../php/validar_sesion.php');
                             </form><br>
                             
                       </div>
+                      <div>
+                    <div id="register"></div>
+                    
+                </div>
                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Insertar Registro
                     </button> -->
@@ -287,6 +294,11 @@ include('../../php/validar_sesion.php');
     </script> 
     <?php //include('modal/modal.php');?>
     <script>
+        function click(){
+            
+        }
+    </script>
+    <script>
                                 function ejecutar(){
 
                                     let doc = $('#document').val();
@@ -313,16 +325,6 @@ include('../../php/validar_sesion.php');
                                             $('#mostrar').html(mensaje);
                                             }
                                         });
-
-                                    <?php /* $doc =  $_POST['document']; 
-                                    if (!$doc === "") {
-                                        $sql4 = "SELECT * FROM articulo INNER JOIN persona on articulo.id_persona=persona.id WHERE persona.documento=$doc";
-                                        $query4 = mysqli_query($conexion,$sql4);
-                                        if($query){
-
-                                        }
-                                    } */
-                                    ?>
                                 }
 
                                 

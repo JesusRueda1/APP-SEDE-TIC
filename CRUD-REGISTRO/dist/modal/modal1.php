@@ -9,12 +9,12 @@
         <form action="php/agregar.php" method="POST"><!-- onsubmit="event.preventDefault();onSubmit();" autocomplete="off"-->                          
                       <div class="caja">
                         <?php 
-                        session_start(); 
+//                        session_start(); 
                         include('../../../conexion/conexion.php');
                         $doc = $_SESSION['docu'];
                         
                         $SQL2 = "SELECT * FROM articulo INNER JOIN persona on articulo.id_persona=persona.id WHERE persona.documento=$doc";
-                        $query2($conexion,$SQL2);
+                        $query2 = mysqli_query($conexion,$SQL2);
                         if(mysqli_fetch_array($query2)){?>
                         <div class="row">
                             <div class="col-md-3">
@@ -59,7 +59,7 @@
 
                         <input class="submit" type="submit" value="Guardar">
                       </div>
-                    </form>
+        </form>
             
         
           <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
