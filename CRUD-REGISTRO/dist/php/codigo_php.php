@@ -1,7 +1,8 @@
 <?php
 session_start();
+include('../../../conexion/conexion.php');
 $doc = $_POST['documento'];  
-$SQL6 = "SELECT * FROM artiuclo INNER JOIN persona ON `articulo`.`id_persona`= persona.`id` WHERE `persona`.`documento`='$doc';";
+$SQL6 = "SELECT * FROM articulo INNER JOIN persona ON `articulo`.`id_persona`= persona.`id` WHERE `persona`.`documento`='$doc';";
 $query6 = mysqli_query($conexion,$SQL6);
 $nr = mysqli_num_rows($query6);
 if($nr>0){

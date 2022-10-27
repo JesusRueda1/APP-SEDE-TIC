@@ -206,7 +206,7 @@ include('../../php/validar_sesion.php');
                         </table>
                       </div>
                       <br/>
-                      <?php ?>
+
                       <div class="containter-fluid">
                             <form method="POST">
                                 <div class="row">
@@ -215,7 +215,8 @@ include('../../php/validar_sesion.php');
                                         
                                     </div>
                                     <div class="col-lg-1">
-                                        <button type="button" id="buscar" onclick="/*click()*/;ejecutar()" class="submit submit-hv" style="border-radius:10px;">Buscar</button>
+                                        <!-- <button type="button" id="buscar" onclick="/*click()*/;ejecutar()" class="submit submit-hv" style="border-radius:10px;">Buscar</button> -->
+                                        <input type="submit" name="submit" id="buscar" value="buscar" class="submit submit-hv"style="border-radius:10px;">
                                     </div>
                                 </div>
                             </form><br>
@@ -285,7 +286,13 @@ include('../../php/validar_sesion.php');
       myInput.focus()
         })
         </script>
-        
+<?php
+$SQL6 = "SELECT * FROM articulo INNER JOIN persona ON `articulo`.`id_persona`= persona.`id` WHERE `persona`.`documento`='$doc';";
+$query6 = mysqli_query($conexion,$SQL6);
+$nr = mysqli_num_rows($query6);
+if($nr>0){
+while($rows = mysqli_fetch_array($query6)){}
+?>
     <script>
         // Initialize the DataTable
         $(document).ready(function () {
@@ -296,7 +303,7 @@ include('../../php/validar_sesion.php');
             });
         });
     </script> 
-    <!-- <script>
+    <script>
         let boton = document.getElementById('buscar');
         let mostrar = document.getElementById('register');
         function click(){
@@ -322,10 +329,10 @@ include('../../php/validar_sesion.php');
                                 $SQL3 = "SELECT * FROM roles";
                                 $query3= mysqli_query($conexion,$SQL3);?>
                                 <select name="rol" id="rol" required class="form-control">
-                                    <option value="">Selecione una opcion...</option>
-                                    <?php while($row = mysqli_fetch_array($query3)){?>
-                                        <option value="<?php echo $row['id']; ?>"><?php  echo $row['descripcion']; ?></option>
-                                        <?php }  */?>
+                                <option value="">Selecione una opcion...</option>
+                                <?php while($row = mysqli_fetch_array($query3)){?>
+                                    <option value="<?php echo $row['id']; ?>"><?php  echo $row['descripcion']; ?></option>
+                                    <?php }  */?>
                                     </select>
                             </div>
                             <div class="col-md-3">
@@ -347,8 +354,8 @@ include('../../php/validar_sesion.php');
 
         }
         boton.onclick = click;
-    </script> -->
-    <script>
+    </script>
+    <!-- <script>
                                 function ejecutar(){
 
                                     let doc = $('#document').val();
@@ -366,19 +373,141 @@ include('../../php/validar_sesion.php');
                                             url: 'php/codigo_php.php',
                                             type: 'POST',
                                             
-                                            /* beforesend: function()
+                                            beforesend: function()
                                             {
-                                            $('#mostrar').html("Mensaje antes de Enviar");
+                                            $('#register').html("Mensaje antes de Enviar");
                                             },
     
                                             success: function(mensaje)
                                             {
-                                            $('#mostrar').html(mensaje);
-                                            } */
+                                            $('#register').html(mensaje);
+                                            }
                                         });
                                 }
                                 
-    </script>
+    </script> -->
+    <?php
+        if(isset($_POST["submit"]) && !empty($_POST["submit"])) {
+            $doc = $_POST["document"];
+            $SQL6 = "SELECT * FROM articulo INNER JOIN persona ON `articulo`.`id_persona`= persona.`id` WHERE `persona`.`documento`='$doc';";
+            $query6 = mysqli_query($conexion,$SQL6);
+            $nr = mysqli_num_rows($query6);
+            if($nr>0){
+                while($rows = mysqli_fetch_array($query6)){
+                    $nombre = $rows['nombre'];
+                    $apellido = $rows['apellido'];
+                    $documento = $rows['documento'];
+
+                    echo"<script>
+                    let boton = document.getElementById('buscar');
+                    let mostrar = document.getElementById('register');
+                    
+                    function click(){
+                        mostrar.innerHTML = `
+                        <form action='php/agregar.php' method='POST'><!-- onsubmit='event.preventDefault();onSubmit();' autocomplete='off'-->                          
+                                <div class='caja'>
+                                    <div class='row'>
+                                        <div class='col-md-3'>
+                                            <label for='nom'>Nombre</label> <input type='text' id='nom' name='nom' placeholder='Escriba aqui' required class='form-control' value='$nombre;'>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            <label for='ape'>Apellido</label> <input type='text' id='ape' name='ape' placeholder='Escriba aqui' required class='form-control ' value='$apellido'>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            <label for='doc'>Documento</label> <input type='text' id='doc' name='doc' placeholder='Escriba aqui' required class='form-control ' value='$documento'>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-md-3'>
+                                            
+                                            <label for='rol'>Rol</label> ";
+                                            $SQL3 = 'SELECT * FROM roles';
+                                            $query3 = mysqli_query($conexion,$SQL3);?>
+                                            <?php echo"<select name='rol' id='rol' required class='form-control'>
+                                                <option value=''>Selecione una opcion...</option>";?>
+                                                <?php while($row = mysqli_fetch_array($query3)){ $descripcion = $row['descripcion'];$id = $row['id'];?>
+                                                    
+                                                    <?php echo"<option value='<?php echo $id; ?>'><?php  echo '$descripcion' ?></option>";?>
+                                                    <?php } ?><?php echo "</select>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            <label for='articulo'>Articulo</label> <input type='text' id='articulo' name='articulo' placeholder='Escriba aqui' required class='form-control'>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            <label for='obs'>Observaciones</label>
+                                            <textarea name='obs' id='obs' cols='28' rows='5' placeholder='Escriba aqui' required class='form-control'></textarea>
+                                        </div>
+                                        <div class='row'>
+                                            <div class='col-md-9'>
+                                                <input class='submit submit-hv' type='submit' value='Guardar' style='border-radius:10px'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        `;
+
+                    }
+                    boton.onclick = click;"; ?>
+                                                <?php }?>
+            <?php echo "</script>";?>
+                    
+            
+                <?php }else{?>
+            <script>
+                let boton = document.getElementById('buscar');
+                let mostrar = document.getElementById('register');
+                function click(){
+                    mostrar.innerHTML = `        
+                    <form action='php/agregar.php' method='POST'><!-- onsubmit='event.preventDefault();onSubmit();' autocomplete='off'-->                          
+                                <div class='caja'>
+                                    <div class='row'>
+                                        <div class='col-md-3'>
+                                            <label for='nom'>Nombre</label> <input type='text' id='nom' name='nom' placeholder='Escriba aqui' required class='form-control '>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            <label for='ape'>Apellido</label> <input type='text' id='ape' name='ape' placeholder='Escriba aqui' required class='form-control '>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            <label for='doc'>Documento</label> <input type='text' id='doc' name='doc' placeholder='Escriba aqui' required class='form-control '>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-md-3'>
+                                            
+                                            <label for='rol'>Rol</label> 
+                                            <?php 
+                                            $SQL3 = "SELECT * FROM roles";
+                                            $query3= mysqli_query($conexion,$SQL3);?>
+                                            <select name='rol' id='rol' required class='form-control'>
+                                                <option value=''>Selecione una opcion...</option>
+                                                <?php while($row = mysqli_fetch_array($query3)){?>
+                                                    <option value='<?php echo $row['id']; ?>'><?php  echo $row['descripcion']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            <label for='articulo'>Articulo</label> <input type='text' id='articulo' name='articulo' placeholder='Escriba aqui' required class='form-control'>
+                                        </div>
+                                        <div class='col-md-3'>
+                                            <label for='obs'>Observaciones</label>
+                                            <textarea name='obs' id='obs' cols='28' rows='5' placeholder='Escriba aqui' required class='form-control'></textarea>
+                                        </div>
+                                        <div class='row'>
+                                            <div class='col-md-9'>
+                                                <input class='submit submit-hv' type='submit' value='Guardar' style='border-radius:10px;'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        `;
+
+                    }
+                    boton.onclick = click;
+            </script>
+
+    <?php } ?>
+        <?php }?>
     </body>
-    
 </html>
