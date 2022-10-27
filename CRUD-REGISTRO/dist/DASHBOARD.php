@@ -11,7 +11,7 @@ include('../../php/validar_sesion.php');
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>Registro de articulos</title>
         <link rel="stylesheet" href="styles/style.css">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
@@ -33,6 +33,12 @@ include('../../php/validar_sesion.php');
     <script src=
 "https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js">
     </script>
+    <!-- Estilos de la caja xD -->    
+    <style>
+        .submit-hv:hover{
+            background-color: #47a386;
+        }
+    </style>
     </head>
     <body class="sb-nav-fixed">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -40,7 +46,7 @@ include('../../php/validar_sesion.php');
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #57a639;">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html" style="color: white;">Logo</a>
+            <a class="navbar-brand ps-3" href="#" style="color: white;"><img src="images/icon_page.png" height="60" alt="Logo de la pagina" /></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
@@ -201,7 +207,6 @@ include('../../php/validar_sesion.php');
                       </div>
                       <br/>
                       <?php ?>
-                      <input class="submit" type="submit" value="Abrir" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-radius:10px;">
                       <div class="containter-fluid">
                             <form method="POST">
                                 <div class="row">
@@ -209,16 +214,15 @@ include('../../php/validar_sesion.php');
                                         <input type="text" placeholder="Documento" name="document" id="document">
                                         
                                     </div>
-                                    <div class="col-lg-2">
-                                        <button type="button" id="buscar" onclick="ejecutar()" data-bs-toggle="modal" data-bs-target="#exampleModal">Buscar</button>
+                                    <div class="col-lg-1">
+                                        <button type="button" id="buscar" onclick="/*click()*/;ejecutar()" class="submit submit-hv" style="border-radius:10px;">Buscar</button>
                                     </div>
-                                    <div id="mostrar"></div>
                                 </div>
                             </form><br>
-                            
+                            <div id="register"></div>
                       </div>
                       <div>
-                    <div id="register"></div>
+                        
                     
                 </div>
                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -228,7 +232,7 @@ include('../../php/validar_sesion.php');
              
            </footer>
 
-          <script type="text/javascript" src="js/crud.js"></script>
+          
           
         </div>
     </div>
@@ -292,42 +296,89 @@ include('../../php/validar_sesion.php');
             });
         });
     </script> 
-    <?php //include('modal/modal.php');?>
-    <script>
+    <!-- <script>
+        let boton = document.getElementById('buscar');
+        let mostrar = document.getElementById('register');
         function click(){
-            
+            mostrar.innerHTML = `
+                <form action="php/agregar.php" method="POST">                          
+                    <div class="caja">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="nom">Nombre</label> <input type="text" id="nom" name="nom" placeholder="Escriba aqui" required class="form-control ">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="ape">Apellido</label> <input type="text" id="ape" name="ape" placeholder="Escriba aqui" required class="form-control ">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="doc">Documento</label> <input type="text" id="doc" name="doc" placeholder="Escriba aqui" required class="form-control ">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                
+                                <label for="rol">Rol</label> 
+                                <?php /* 
+                                $SQL3 = "SELECT * FROM roles";
+                                $query3= mysqli_query($conexion,$SQL3);?>
+                                <select name="rol" id="rol" required class="form-control">
+                                    <option value="">Selecione una opcion...</option>
+                                    <?php while($row = mysqli_fetch_array($query3)){?>
+                                        <option value="<?php echo $row['id']; ?>"><?php  echo $row['descripcion']; ?></option>
+                                        <?php }  */?>
+                                    </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="articulo">Articulo</label> <input type="text" id="articulo" name="articulo" placeholder="Escriba aqui" required class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="obs">Observaciones</label>
+                                <textarea name="obs" id="obs" cols="28" rows="5" placeholder="Escriba aqui" required class="form-control"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input class="submit submit-hv" type="submit" value="Guardar" style="border-radius:10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            `;
+
         }
-    </script>
+        boton.onclick = click;
+    </script> -->
     <script>
                                 function ejecutar(){
 
                                     let doc = $('#document').val();
-
+                                    
                                     
                                     var parametros = 
                                         {
                                             "documento" : doc,
                                         };
                                         alert(`el documento es ${doc}`);
+                                        
 
                                         $.ajax({
                                             data: parametros,
                                             url: 'php/codigo_php.php',
                                             type: 'POST',
                                             
-                                            beforesend: function()
+                                            /* beforesend: function()
                                             {
                                             $('#mostrar').html("Mensaje antes de Enviar");
                                             },
-
+    
                                             success: function(mensaje)
                                             {
                                             $('#mostrar').html(mensaje);
-                                            }
+                                            } */
                                         });
                                 }
-
                                 
-                            </script>
+    </script>
     </body>
+    
 </html>
