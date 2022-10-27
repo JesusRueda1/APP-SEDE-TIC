@@ -359,7 +359,7 @@ include('../../php/validar_sesion.php');
                                         {
                                             "documento" : doc,
                                         };
-                                        alert(`el documento es ${doc}`);
+                                        /* alert(`el documento es ${doc}`); */
                                         
 
                                         $.ajax({
