@@ -12,6 +12,7 @@ if(!empty($_SESSION['documento']) && !empty($_SESSION['documentos']) && !empty($
     $documentos = $_SESSION['documentos'];
 }
 include('../../php/validar_sesion.php');
+include('php/datetime.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -187,7 +188,7 @@ include('../../php/validar_sesion.php');
                             </tr>
                           </thead>
                             <tbody><?php include('php/consultas.php'); 
-                            while($row = mysqli_fetch_array($query)){?>
+                            while($row = mysqli_fetch_array($query)){ $id_articulo = $row['id'];?>
                             <tr>
                             <td><?php echo $row['nombre'];?></td>
                             <td><?php echo $row['apellido']; ?></td>
@@ -219,8 +220,10 @@ include('../../php/validar_sesion.php');
                             <td><?php echo $row['datos_salida'];?></td>
                             
                                 <td>
-                                    <input class="submit" type="button" onClick="Editarr(this)" value="Editar" style="border-radius:10px;" >
-                                    <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;" >
+                                    <form action="php/salida.php">
+                                        <input class="submit" type="submit" id="salida" value="Salida" style="border-radius:10px;">
+                                    </form>
+                                    <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;">
                                 </td>
 
                             </tr>
@@ -350,7 +353,7 @@ include('../../php/validar_sesion.php');
                                 $query3= mysqli_query($conexion,$SQL3);?>
                                 <select name="rol" id="rol" required class="form-control">
                                 <option value="">Selecione una opcion...</option>
-                                <option selected value="<?php// echo $id_rol; ?>"><?php echo $rol; ?></option>
+                                <option selected value="<?php echo $id_rol; ?>"><?php echo $rol; ?></option>
                                 <?php while($row = mysqli_fetch_array($query3)){?>
                                     <option value="<?php echo $row['id']; ?>"><?php  echo $row['descripcion']; ?></option>
                                     <?php } ?>
@@ -408,6 +411,24 @@ include('../../php/validar_sesion.php');
                                 }
                                 
     </script>
-    
+    <script>
+        boton_salida = document.getElementById('salida');
+        function salir(){
+            <?php /* 
+            $SQL4 = "UPDATE articulo SET datos_salida='".$hora."' WHERE id='".$_SESSION['id_articulo']."';";
+            $query4 = mysqli_query($conexion,$SQL4);
+            if ($query4) {
+                echo "
+                    <script>
+                        alert('hora de salida actualizada!');
+                        location.href='DASHBOARD.php';
+                    </script>
+                ";
+            } */
+            ?>
+        }
+        boton_salida.onclick = salir;
+    </script>    
     </body>
+    <?php $_SESSION['id_articulo'] = $id_articulo;?>
 </html>

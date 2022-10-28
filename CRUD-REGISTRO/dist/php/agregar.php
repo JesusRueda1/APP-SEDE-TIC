@@ -4,19 +4,19 @@ include('datetime.php');
 $nombre = $_POST['nom'];
 $apellido= $_POST['ape'];
 $Doc = $_POST['doc'];
-$email = $_POST['mail'];
 $articulo = $_POST['articulo'];
 $observaciones = $_POST['obs'];
+$rol = $_POST['rol'];
 
 $SQL="SELECT * FROM persona WHERE documento='$Doc'";
 $query=mysqli_query($conexion,$SQL);
-if($rs = mysqli_fetch_array($query)){
-    $id = $rs['id'];
-}
-$SQL2 = "INSERT INTO `articulo` (`id_persona`, `articulo`, `fecha`, `datos_entrada`, `datos_salida`, `observaciones`) VALUES ($id, '$articulo', '$fecha','$hora' , NULL, '$observaciones') ";
-$query2 = mysqli_query($conexion,$SQL2);
 if($query){
-    if ($query2) {
+    if($rs = mysqli_fetch_array($query)){
+        $id = $rs['id'];
+    }
+    $SQL2 = "INSERT INTO `articulo` (`id_persona`, `articulo`, `fecha`, `datos_entrada`, `datos_salida`, `observaciones`) VALUES ($id, '$articulo', '$fecha','$hora' , NULL, '$observaciones') ";
+    $query2 = mysqli_query($conexion,$SQL2);
+    if ($query2){
         echo"
             <script>
                 alert('el articulo fue ingresado con exito');
@@ -24,13 +24,49 @@ if($query){
             </script>
         ";
     }else{
-
+        echo"
+            <script>
+                alert('el articulo no pudo guardarse intente de nuevo!');
+                location.href='../DASHBOARD.php';
+            </script>
+        ";
     }
 }else{
-    echo"
-        <script>
-            alert('La persona no esta en la base de datos ingresela!');
-        </script>
-    ";
+    $SQL3 = "INSERT INTO `persona` (`documento`, `nombre`, `apellido`, `rol`) VALUES ('$Doc', '$nombre', '$apellido', '$rol');";
+    $query3 = mysqli_query($conexion,$SQL3);
+    if($query3){
+        $SQL4 = "SELECT * FROM persona WHERE documento ='$Doc'";
+        $query4 = mysqli_query($conexion,$SQL4);
+        if($query4){
+            if($row = mysqli_fetch_array($query4)){
+                $id_p = $row['id'];
+            }
+            $SQL5 = "INSERT INTO `articulo` (`id_persona`, `articulo`, `fecha`, `datos_entrada`, `datos_salida`, `observaciones`) VALUES ('$id_p', '$articulo', $fecha, '$hora', NULL, $observaciones);";
+            $query5 = mysqli_query($conexion,$SQL5);
+            if ($query5) {
+                echo "
+                    <script>
+                        alert('el articulo fue ingresado con exito');
+                        location.href='../DASHBOARD.php';
+                    </script>
+                    ";
+            }else{
+                echo "
+                <script>
+                    alert('Error: el articulo no se pudo registrar, intente de nuevo!');
+                    location.href='../DASHBOARD.php';
+                </script>
+                ";
+            }
+        }
+        
+    }else{
+        echo"
+            <script>
+                alert('no pudo registrar a la persona que no estaba guardada!');
+                location.href='../DASHBOARD.php';
+            </script>
+        ";
+    }
 }
 ?>
