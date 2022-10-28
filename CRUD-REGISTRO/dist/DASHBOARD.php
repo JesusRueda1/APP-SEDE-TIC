@@ -167,14 +167,14 @@ include('php/datetime.php');
                       </div>
             
             <div class="tablita">
-                
+                <form method="POST" action="php/salida.php">
                         <table class="tabla" id="example">
                             <div class="container-fluid" style="padding:0;margin:0;"> 
                                     <div class="row form-group">
                             </div>
                           <thead>
-                            <tr> 
-                              <th>ID</th>
+                            <tr>
+                              <th>ID</th> 
                               <th>Nombre</th> 
                               <th>Apellido</th>
                               <th>Documento</th>
@@ -190,8 +190,11 @@ include('php/datetime.php');
                             <tbody><?php include('php/consultas.php'); 
                             while($row = mysqli_fetch_array($query)){ ?>
                             <tr>
-                            <td><?php echo $_SESSION['id_articulo'] = $row['id']; ?></td>
-                            <td><?php echo $row['nombre'];?></td>
+                            <td><?php echo /* $_SESSION['id_articulo'] = */ $row['id'];?></td>
+                            <td>
+                                <input type="hidden" name="id_articulo" value="<?php echo $row['id'];?>">
+                                <?php echo $row['nombre'];?>
+                            </td>
                             <td><?php echo $row['apellido']; ?></td>
                             <td><?php echo $row['documento'];?></td>
                             <td><?php 
@@ -219,13 +222,12 @@ include('php/datetime.php');
                             <td><?php echo $row['datos_entrada'];?></td>
                             <td><?php echo $row['datos_salida'];?></td>
                             
-                                <td>
-                                    <form action="php/salida.php">
-                                        <input class="submit" type="submit" id="salida" value="Salida" style="border-radius:10px;">
-                                    </form>
+                                <td>    
+                                    <input class="submit" type="submit" id="salida" value="Salida" style="border-radius:10px;">
                                     <input class="submit" type="button" onClick="//Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;">
                                 </td>
-
+                                    
+                </form>
                             </tr>
                             <?php }?>
                             </tbody>
