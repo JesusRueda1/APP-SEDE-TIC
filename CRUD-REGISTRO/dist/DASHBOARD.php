@@ -1,6 +1,16 @@
 <?php 
 session_start();
 $nombreCompleto = $_SESSION['nombre']." ".$_SESSION['apellido'];
+$doc = null;$nombre = null;$apellido = null;$articulo = null;$rol = null;$id_rol = null;$documentos=null;
+if(!empty($_SESSION['documento']) && !empty($_SESSION['documentos']) && !empty($_SESSION['nombre']) && !empty($_SESSION['apellido']) && !empty($_SESSION['articulo']) && !empty($_SESSION['roless']) && !empty($_SESSION['id_rol'])){
+    $doc = $_SESSION['documento'];
+    $nombre = $_SESSION['nombre'];
+    $apellido = $_SESSION['apellido'];
+    $articulo = $_SESSION['articulo'];
+    $rol = $_SESSION['roless'];
+    $id_rol = $_SESSION['id_rol'];
+    $documentos = $_SESSION['documentos'];
+}
 include('../../php/validar_sesion.php');
 ?>
 <!DOCTYPE html>
@@ -141,13 +151,13 @@ include('../../php/validar_sesion.php');
               </header>
             <br/>
             <div class="containter-fluid">
-                            <form method="POST">
+                            <form action="php/codigo_php.php" method="POST">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <input type="text" placeholder="Documento" name="document" id="document">
+                                        <input type="text" placeholder="Documento" name="documento" id="document" value="<?php echo $doc?>">
                                     </div>
                                     <div class="col-lg-1">
-                                        <button type="button" id="buscar" onclick="/*click()*/ejecutar()" class="submit submit-hv" style="border-radius:10px;">Buscar</button>
+                                        <button type="button" id="buscar" onclick="ejecutar()" class="submit submit-hv" style="border-radius:10px;">Buscar</button>
                                         <!-- <input type="submit" name="submit" id="buscar" value="buscar" class="submit submit-hv"style="border-radius:10px;"> -->
                                     </div>
                                 </div>
@@ -305,13 +315,13 @@ include('../../php/validar_sesion.php');
                     <div class="caja">
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="nom">Nombre</label> <input type="text" id="nom" name="nom" placeholder="Escriba aqui" required class="form-control ">
+                                <label for="nom">Nombre</label> <input type="text" id="nom" name="nom" placeholder="Escriba aqui" required class="form-control" value="<?php echo $nombre?>">
                             </div>
                             <div class="col-md-3">
-                                <label for="ape">Apellido</label> <input type="text" id="ape" name="ape" placeholder="Escriba aqui" required class="form-control ">
+                                <label for="ape">Apellido</label> <input type="text" id="ape" name="ape" placeholder="Escriba aqui" required class="form-control" value="<?php echo $apellido?>">
                             </div>
                             <div class="col-md-3">
-                                <label for="doc">Documento</label> <input type="text" id="doc" name="doc" placeholder="Escriba aqui" required class="form-control ">
+                                <label for="doc">Documento</label> <input type="text" id="doc" name="doc" placeholder="Escriba aqui" required class="form-control " value="<?php echo $documentos?>">
                             </div>
                         </div>
                         <div class="row">
@@ -319,10 +329,28 @@ include('../../php/validar_sesion.php');
                                 
                                 <label for="rol">Rol</label> 
                                 <?php 
+                                switch ($id_rol) {
+                                    case 1:
+                                        $rol ="administrador";
+                                        break;
+                                    case 2:
+                                        $rol="vigilante";
+                                        break;
+                                    case 3:
+                                        $rol="instructor";
+                                        break;
+                                    case 3:
+                                        $rol="aprendiz";
+                                        break;
+                                    default:
+                                        $rol="visitante";
+                                        break;
+                                }
                                 $SQL3 = "SELECT * FROM roles";
                                 $query3= mysqli_query($conexion,$SQL3);?>
                                 <select name="rol" id="rol" required class="form-control">
                                 <option value="">Selecione una opcion...</option>
+                                <option selected value="<?php// echo $id_rol; ?>"><?php echo $rol; ?></option>
                                 <?php while($row = mysqli_fetch_array($query3)){?>
                                     <option value="<?php echo $row['id']; ?>"><?php  echo $row['descripcion']; ?></option>
                                     <?php } ?>
@@ -359,7 +387,7 @@ include('../../php/validar_sesion.php');
                                         {
                                             "documento" : doc,
                                         };
-                                        /* alert(`el documento es ${doc}`); */
+                                        alert(`el documento es ${doc}`);
                                         
 
                                         $.ajax({
