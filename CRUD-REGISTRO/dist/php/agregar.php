@@ -10,7 +10,7 @@ $rol = $_POST['rol'];
 
 $SQL="SELECT * FROM persona WHERE documento='$Doc'";
 $query=mysqli_query($conexion,$SQL);
-if($query){
+if(mysqli_num_rows($query)>0){
     if($rs = mysqli_fetch_array($query)){
         $id = $rs['id'];
     }
@@ -27,7 +27,7 @@ if($query){
         echo"
             <script>
                 alert('el articulo no pudo guardarse intente de nuevo!');
-                location.href='../DASHBOARD.php';
+                //location.href='../DASHBOARD.php';
             </script>
         ";
     }
@@ -37,7 +37,7 @@ if($query){
     if($query3){
         $SQL4 = "SELECT * FROM persona WHERE documento ='$Doc'";
         $query4 = mysqli_query($conexion,$SQL4);
-        if($query4){
+        if(mysqli_num_rows($query4)>0){
             if($row = mysqli_fetch_array($query4)){
                 $id_p = $row['id'];
             }
@@ -54,7 +54,7 @@ if($query){
                 echo "
                 <script>
                     alert('Error: el articulo no se pudo registrar, intente de nuevo!');
-                    location.href='../DASHBOARD.php';
+                    //location.href='../DASHBOARD.php';
                 </script>
                 ";
             }

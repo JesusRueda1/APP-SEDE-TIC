@@ -21,9 +21,9 @@ if(!$user=="" && !$pass==""){
             if(password_verify($pass, $pass2)){
                 // Codigo para entrar 
             
-                $_SESSION['id'] = $id;
-                $_SESSION['nombre'] = $name;
-                $_SESSION['apellido'] = $apellido;
+                $_SESSION['id_ingreso'] = $id;
+                $_SESSION['nombre_ingreso'] = $name;
+                $_SESSION['apellido_ingreso'] = $apellido;
 
                 switch ($rol) {
                     case 1:

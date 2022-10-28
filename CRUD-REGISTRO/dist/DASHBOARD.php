@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$nombreCompleto = $_SESSION['nombre']." ".$_SESSION['apellido'];
+$nombreCompleto = $_SESSION['nombre_ingreso']." ".$_SESSION['apellido_ingreso'];
 $doc = null;$nombre = null;$apellido = null;$articulo = null;$rol = null;$id_rol = null;$documentos=null;
 if(!empty($_SESSION['documento']) && !empty($_SESSION['documentos']) && !empty($_SESSION['nombre']) && !empty($_SESSION['apellido']) && !empty($_SESSION['articulo']) && !empty($_SESSION['roless']) && !empty($_SESSION['id_rol'])){
     $doc = $_SESSION['documento'];
@@ -174,10 +174,10 @@ include('php/datetime.php');
                             </div>
                           <thead>
                             <tr> 
+                              <th>ID</th>
                               <th>Nombre</th> 
                               <th>Apellido</th>
                               <th>Documento</th>
-                              <th>Correo</th>
                               <th>Rol</th>
                               <th>Articulo</th>
                               <th>Fecha</th>
@@ -188,12 +188,12 @@ include('php/datetime.php');
                             </tr>
                           </thead>
                             <tbody><?php include('php/consultas.php'); 
-                            while($row = mysqli_fetch_array($query)){ $id_articulo = $row['id'];?>
+                            while($row = mysqli_fetch_array($query)){ ?>
                             <tr>
+                            <td><?php echo $_SESSION['id_articulo'] = $row['id']; ?></td>
                             <td><?php echo $row['nombre'];?></td>
                             <td><?php echo $row['apellido']; ?></td>
                             <td><?php echo $row['documento'];?></td>
-                            <td><?php echo $row['correo'];?></td>
                             <td><?php 
                             $rol = $row['rol']; 
                             switch ($rol) {
@@ -223,7 +223,7 @@ include('php/datetime.php');
                                     <form action="php/salida.php">
                                         <input class="submit" type="submit" id="salida" value="Salida" style="border-radius:10px;">
                                     </form>
-                                    <input class="submit" type="button" onClick="Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;">
+                                    <input class="submit" type="button" onClick="//Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;">
                                 </td>
 
                             </tr>
@@ -430,5 +430,4 @@ include('php/datetime.php');
         boton_salida.onclick = salir;
     </script>    
     </body>
-    <?php $_SESSION['id_articulo'] = $id_articulo;?>
 </html>
