@@ -190,9 +190,9 @@ include('php/datetime.php');
                             <tbody><?php include('php/consultas.php'); 
                             while($row = mysqli_fetch_array($query)){ ?>
                             <tr>
-                            <td><?php echo /* $_SESSION['id_articulo'] = */ $row['id'];?></td>
+                            <td><?php echo $row['ID'];?></td>
                             <td>
-                                <input type="hidden" name="id_articulo" value="<?php echo $row['id'];?>">
+                                <!-- <input type="hidden" name="id_articulo" value="<?php //echo $row['ID'];?>"> -->
                                 <?php echo $row['nombre'];?>
                             </td>
                             <td><?php echo $row['apellido']; ?></td>
@@ -224,7 +224,7 @@ include('php/datetime.php');
                             
                                 <td>    
                                     <!-- <input class="submit" type="submit" id="salida" value="Salida" style="border-radius:10px;"> -->
-                                    <a href="#" class="enviar" id="salida"style="border-radius:10px; width:100% !important;" data_id='<?php echo $row['id']; ?>'>Salida</a>
+                                    <a href="#" class="enviar" id="salida" style="border-radius:10px;" id-articulo="<?php echo $row['ID'];?>">Salida</a>
                                     <input class="submit" type="button" onClick="//Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;">
                                 </td>
                                     
@@ -384,56 +384,45 @@ include('php/datetime.php');
     </script>
     <script>
         let mensaje= "se proceso con exito";
-                                function ejecutar(){
-
-                                    let doc = $('#document').val();
-                                    
-                                    
-                                    var parametros = 
-                                        {
-                                            "documento" : doc,
-                                        };
-                                        //alert(`el documento es ${doc}`);
-                                        
-
-                                        $.ajax({
-                                            data: parametros,
-                                            url: 'php/codigo_php.php',
-                                            type: 'POST',
-                                            
-                                            /* beforesend: function()
-                                            {
-                                            $('#register').html("Mensaje antes de Enviar");
-                                            }, */
-
-                                           /*  success: function(mensaje)
-                                            {
-                                            $('#register').html(mensaje);
-                                            } */
-                                        });
-                                }
+            function ejecutar(){
+                let doc = $('#document').val();
+                
+                
+                var parametros = 
+                    {
+                        "documento" : doc,
+                    };
+                    alert(`el documento es ${doc}`);
+                    
+                    
+                    $.ajax({
+                        data: parametros,
+                        url: 'php/codigo_php.php',
+                        type: 'POST',
+                    });
+            }
                                 
     </script>
     <script>
-        boton_salida = document.getElementById('salida');
-        function salir(){
-            <?php /* 
-            $SQL4 = "UPDATE articulo SET datos_salida='".$hora."' WHERE id='".$_SESSION['id_articulo']."';";
-            $query4 = mysqli_query($conexion,$SQL4);
-            if ($query4) {
-                echo "
-                    <script>
-                        alert('hora de salida actualizada!');
-                        location.href='DASHBOARD.php';
-                    </script>
-                ";
-            } */
-            ?>
+        function salidaa(){
+            let salid = document.getElementById('salida');
+            var id = $(this).attr("id-articulo");
+            function enviar(){
+                var parametroAPasar = 
+                    {
+                        "id_articulos" : id,
+                    };
+                    alert(`el id es:  ${id}`);
+                    
+                    $.ajax({
+                        data: parametroAPasar,
+                        url: 'php/salida.php',
+                        type: 'POST',
+                    });
+                }
+            enviar();
         }
-        boton_salida.onclick = salir;
-    </script>
-    <script>
-        
+        salid.onclick = salidaa;
     </script>
     </body>
 </html>

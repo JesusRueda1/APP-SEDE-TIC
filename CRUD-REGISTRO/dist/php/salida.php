@@ -12,7 +12,7 @@ if ($query) {
     echo "
         <script>
             alert('Hora de salida Actualizada!');
-            location.href='../DASHBOARD.php';
+            //location.href='../DASHBOARD.php';
         </script>
     ";
 }
