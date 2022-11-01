@@ -28,7 +28,7 @@ if(!$user=="" && !$pass==""){
                 switch ($rol) {
                     case 1:
                         //header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php');
-                        header('location: ../administrador/CRUD.php');
+                        header('location: ../administrador/index.php');
                         break;
                     case 2:
                         header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php'); 
