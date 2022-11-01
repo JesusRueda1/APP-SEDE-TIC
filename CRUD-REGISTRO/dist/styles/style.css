@@ -139,3 +139,15 @@ td {
     background-color: #57a639;
     border: 2px solid white;
 }
+.enviar{
+    display: inline-block;
+    width:8em;
+    height: 2em;
+    background-color: #57a639;
+    color: white;
+    border: 2px solid white;
+}
+.enviar:hover{
+    color:white;
+    background-color: #58a639dd;
+}

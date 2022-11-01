@@ -23,12 +23,12 @@ include('php/datetime.php');
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Registro de articulos</title>
+        <link rel="icon" href="../../img/icon_page.png">
         <link rel="stylesheet" href="styles/style.css">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="../../bootstrap.trabajo/css/bootstrap.css">
-        <!-- <link rel="stylesheet" href="modal/modal.css"> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- jQuery -->
@@ -155,10 +155,10 @@ include('php/datetime.php');
                             <form action="php/codigo_php.php" method="POST">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <input type="text" placeholder="Documento" name="documento" id="document" value="<?php echo $doc?>">
+                                        <input type="text" class="form-control" placeholder="Documento" name="documento" id="document" value="<?php echo $doc?>">
                                     </div>
                                     <div class="col-lg-1">
-                                        <button type="button" id="buscar" onclick="ejecutar()" class="submit submit-hv" style="border-radius:10px;">Buscar</button>
+                                        <button type="button" id="buscar" onclick="" class="submit submit-hv" style="border-radius:10px;">Buscar</button>
                                         <!-- <input type="submit" name="submit" id="buscar" value="buscar" class="submit submit-hv"style="border-radius:10px;"> -->
                                     </div>
                                 </div>
@@ -223,7 +223,8 @@ include('php/datetime.php');
                             <td><?php echo $row['datos_salida'];?></td>
                             
                                 <td>    
-                                    <input class="submit" type="submit" id="salida" value="Salida" style="border-radius:10px;">
+                                    <!-- <input class="submit" type="submit" id="salida" value="Salida" style="border-radius:10px;"> -->
+                                    <a href="#" class="enviar" id="salida"style="border-radius:10px; width:100% !important;" data_id='<?php echo $row['id']; ?>'>Salida</a>
                                     <input class="submit" type="button" onClick="//Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;">
                                 </td>
                                     
@@ -315,6 +316,7 @@ include('php/datetime.php');
         let boton = document.getElementById('buscar');
         let mostrar = document.getElementById('register');
         function click(){
+            ejecutar();
             mostrar.innerHTML = `
                 <form action="php/agregar.php" method="POST">                          
                     <div class="caja">
@@ -331,7 +333,6 @@ include('php/datetime.php');
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                
                                 <label for="rol">Rol</label> 
                                 <?php 
                                 switch ($id_rol) {
@@ -344,7 +345,7 @@ include('php/datetime.php');
                                     case 3:
                                         $rol="instructor";
                                         break;
-                                    case 3:
+                                    case 4:
                                         $rol="aprendiz";
                                         break;
                                     default:
@@ -392,7 +393,7 @@ include('php/datetime.php');
                                         {
                                             "documento" : doc,
                                         };
-                                        alert(`el documento es ${doc}`);
+                                        //alert(`el documento es ${doc}`);
                                         
 
                                         $.ajax({
@@ -405,10 +406,10 @@ include('php/datetime.php');
                                             $('#register').html("Mensaje antes de Enviar");
                                             }, */
 
-                                            success: function(mensaje)
+                                           /*  success: function(mensaje)
                                             {
                                             $('#register').html(mensaje);
-                                            }
+                                            } */
                                         });
                                 }
                                 
@@ -430,6 +431,9 @@ include('php/datetime.php');
             ?>
         }
         boton_salida.onclick = salir;
-    </script>    
+    </script>
+    <script>
+        
+    </script>
     </body>
 </html>

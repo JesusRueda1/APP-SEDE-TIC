@@ -9,6 +9,7 @@
     <title>Registrar usuario</title>
     <!-- <link rel="stylesheet" href="css/styles_CRUD.css"> -->
     <link rel="stylesheet" href="../bootstrap.trabajo/css/bootstrap.min.css">
+    <link rel="icon" href="../../img/icon_page.png">
 </head>
 <body>
   
