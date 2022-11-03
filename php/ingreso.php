@@ -8,7 +8,7 @@ if(!$user=="" && !$pass==""){
     $SQL = "SELECT * FROM persona 
     WHERE documento=".$user.""; 
     $query = mysqli_query($conexion,$SQL);
-    if($query){
+    if(mysqli_num_rows($query)>0){
         while($row = mysqli_fetch_array($query)){
             $id = $row['id']; 
             $rol = $row['rol']; 
@@ -27,14 +27,11 @@ if(!$user=="" && !$pass==""){
 
                 switch ($rol) {
                     case 1:
-                        //header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php');
-                        header('location: ../administrador/index.php');
+                        /* //header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php'); */
+                        header('location: ../Administrador/index.php');
                         break;
                     case 2:
                         header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php'); 
-                        break;
-                    case 3:
-                        // header('location: tercerrol.php'); 
                         break;
                     default:
                         echo "

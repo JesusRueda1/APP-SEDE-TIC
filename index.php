@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.trabajo/css/bootstrap.min.css">
    <link rel="stylesheet" href="personal-css/boby.css"> 
-   <link rel="icon" href="../../img/icon_page.png">
+   <link rel="icon" href="img/icon_page.png">
    <title>Login</title>
 </head>
 <body>

@@ -1,3 +1,5 @@
+<?php session_start();
+ include('../php/validar_admin.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -30,7 +32,7 @@
                 <li><a class="dropdown-item" href="#!">Configuración</a></li> 
                 <li><a class="dropdown-item" href="#!">Cambiar contraseña</a></li> 
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="../../php/cerrar_sesion.php">Cerrar Sesión</a></li>
+                <li><a class="dropdown-item" href="../php/cerrar_sesion.php">Cerrar Sesión</a></li>
             </ul>
             
         </nav>

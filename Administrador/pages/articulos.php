@@ -1,4 +1,5 @@
-
+<?php session_start();
+include('../../php/validar_sesion.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
