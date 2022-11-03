@@ -12,6 +12,7 @@
     <link rel="icon" href="../img/icon_page.png">
 </head>
 <body>
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   <nav class="navbar navbar-expand-lg" style="background-color: #57a639; margin: left 50%; color:white ;" >
       <div class="container px-12">
           <a class="navbar-brand" href="#" style="color: white;"><img src="../img/icon_page - copia.png" height="50" alt="Logo de la pagina"></a>
@@ -117,5 +118,7 @@
         myInput.focus()
       })
     </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/scripts.js"></script>
 </body>
 </html>

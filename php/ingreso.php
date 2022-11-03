@@ -31,7 +31,7 @@ if(!$user=="" && !$pass==""){
                         header('location: ../Administrador/index.php');
                         break;
                     case 2:
-                        header('location: ../CRUD-REGISTRO/dist/DASHBOARD.php'); 
+                        header('location: ../CRUD-REGISTRO/dist/inicio.php'); 
                         break;
                     default:
                         echo "

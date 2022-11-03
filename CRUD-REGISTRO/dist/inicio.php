@@ -1,5 +1,6 @@
 <?php session_start();
 $nombreCompleto = $_SESSION['nombre_ingreso']." ".$_SESSION['apellido_ingreso'];
+include('../../php/validar_sesion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +35,6 @@ $nombreCompleto = $_SESSION['nombre_ingreso']." ".$_SESSION['apellido_ingreso'];
                 <li class="nav-item dropdown" style="margin-left:1700px;">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Configuración</a></li> 
                         <li><a class="dropdown-item" href="#!">Cambiar Contraseña</a></li> 
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="../../php/cerrar_sesion.php">Cerrar Sesión</a></li>

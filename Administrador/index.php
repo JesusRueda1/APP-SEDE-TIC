@@ -14,8 +14,20 @@
         <link href="css/styles.css" rel="stylesheet">
         <link rel="stylesheet" href="../bootstrap.trabajo/css/bootstrap.min.css">
         <script src="../bootstrap.trabajo/js/bootstrap.min.js"></script>
+        <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <!-- Estilos de la caja xD -->    
+    <style>
+        .submit-hv:hover{
+            background-color: #47a386;
+        }
+    </style>
     </head>
     <body>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg" style="background-color: #57a639; margin: left 50%; color:white ;" >
             <div class="container px-12">

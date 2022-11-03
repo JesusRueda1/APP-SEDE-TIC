@@ -120,7 +120,6 @@ include('php/datetime.php');
                       </div>
             
             <div class="tablita">
-                <form method="POST" action="php/salida.php">
                         <table class="tabla" id="example">
                             <div class="container-fluid" style="padding:0;margin:0;"> 
                                     <div class="row form-group">
@@ -178,8 +177,6 @@ include('php/datetime.php');
                                 <td>    
                                     <a href="#" class="enviar" id="salida" style="border-radius:10px;" id-articulo="<?php echo $row['ID'];?>">Salida</a>
                                 </td>
-                                    
-                </form>
                             </tr>
                             <?php }?>
                             </tbody>
@@ -212,6 +209,18 @@ include('php/datetime.php');
             </div>
         </div>
     </div>
+    <script>
+        // Initialize the DataTable
+        $(document).ready(function () {
+            $('#example').DataTable({
+                // Enable the searching
+                // of the DataTable
+                searching: true
+            });
+        });
+    </script>
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -223,39 +232,7 @@ include('php/datetime.php');
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-        
-        
-        <script>
-            /* const open = document.getElementById('open');
-            const modal_container = document.getElementById('modal_container');
-            const close = document.getElementById('close');
-            open.addEventListener('click', () => {
-              modal_container.classList.add('show');  
-            });
-            close.addEventListener('click', () => {
-              modal_container.classList.remove('show');
-            });  */
-            
-      const myModal = document.getElementById('myModal')
-      const myInput = document.getElementById('myInput')
-
-      myModal.addEventListener('shown.bs.modal', () => {
-      myInput.focus()
-        })
-        </script>
-<?php
-
-?>
-    <script>
-        // Initialize the DataTable
-        $(document).ready(function () {
-            $('#example').DataTable({
-                // Enable the searching
-                // of the DataTable
-                searching: true
-            });
-        });
-    </script> 
+     
     <script>
         let boton = document.getElementById('buscar');
         let mostrar = document.getElementById('register');
@@ -387,6 +364,7 @@ include('php/datetime.php');
                     data: 'id_articulos='+id,
                     success: function(data){
                     alert(data, 1);
+                    window.location.reload();
                 }
             });
         }, 
