@@ -84,7 +84,7 @@
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Insertar Registro
       </button>
-      <a class="btn btn-primary" href="../crud-registro/dist/dashboard.php" role="button">Ir a la Pagina Principal</a>
+      <!-- <a class="btn btn-primary" href="../crud-registro/dist/dashboard.php" role="button">Ir a la Pagina Principal</a> -->
       </div>
     </div>
 

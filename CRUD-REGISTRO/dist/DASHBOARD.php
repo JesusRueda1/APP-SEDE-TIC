@@ -223,7 +223,6 @@ include('php/datetime.php');
                             <td><?php echo $row['datos_salida'];?></td>
                             
                                 <td>    
-                                    <!-- <input class="submit" type="submit" id="salida" value="Salida" style="border-radius:10px;"> -->
                                     <a href="#" class="enviar" id="salida" style="border-radius:10px;" id-articulo="<?php echo $row['ID'];?>">Salida</a>
                                     <input class="submit" type="button" onClick="//Borrarr(this)" value="Borrar"style="background-color:red;border-radius:10px;">
                                 </td>
@@ -241,13 +240,6 @@ include('php/datetime.php');
                         
                     
                 </div>
-                    
-           <footer class="footer" id="footer">
-             
-           </footer>
-
-          
-          
         </div>
     </div>
                 </main>
@@ -378,7 +370,6 @@ include('php/datetime.php');
                     </div>
                 </form>
             `;
-
         }
         boton.onclick = click;
     </script>
@@ -404,15 +395,15 @@ include('php/datetime.php');
                                 
     </script>
     <script>
+        /* let salid = document.getElementById('salida');
         function salidaa(){
-            let salid = document.getElementById('salida');
             var id = $(this).attr("id-articulo");
             function enviar(){
                 var parametroAPasar = 
                     {
                         "id_articulos" : id,
                     };
-                    alert(`el id es:  ${id}`);
+                    //alert(`el id es:  ${id}`);
                     
                     $.ajax({
                         data: parametroAPasar,
@@ -421,8 +412,40 @@ include('php/datetime.php');
                     });
                 }
             enviar();
+            window.location.reload();
         }
         salid.onclick = salidaa;
+         */
+    </script>
+    <script>
+        initSalida();
+
+        function initSalida() {
+            $("#salida").click(function(e) {
+            e.preventDefault();
+            var id = $(this).attr("id-articulo");
+            var boton = $(this)[0];
+            boton.blur();
+
+            var agree = confirm('¿Esta seguro que desea darle salida a la persona?', 
+                function(){ 
+                $.ajax({
+                    type: "POST",
+                    url: "php/salida.php",
+                    data: 'id_articulos='+id,
+                    success: function(data){
+                    alert(data, 1);
+                }
+            });
+        }, 
+        function(){ 
+            alert('Cancelado');
+            window.location.reload();
+        }
+        );
+        /* window.location.reload(); */
+            });
+        }
     </script>
     </body>
 </html>
