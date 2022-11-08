@@ -53,10 +53,9 @@ include('../../php/validar_sesion.php'); ?>
                 </div>
                 <a style="margin-right:15px;" class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Configuración</a></li> 
-                    <li><a class="dropdown-item" href="#!">Cambiar contraseña</a></li> 
+                    <li><a class="dropdown-item" href="../../configuracion/cambiar_contraseña.php">Cambiar contraseña</a></li> 
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="../../php/cerrar_sesion.php">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item" href="../php/cerrar_sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
             <!-- Aqui va el resto del codigo, tablas etc -->
@@ -139,9 +138,13 @@ include('../../php/validar_sesion.php'); ?>
         // Initialize the DataTable
         $(document).ready(function () {
             $('#example').DataTable({
+                
                 // Enable the searching
                 // of the DataTable
-                searching: true
+                //searching: true
+                "language": {
+                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
             });
         });
     </script> 

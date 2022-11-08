@@ -7,6 +7,9 @@
         <a style="color: white;" class="nav-link" href="../Administrador/index.php">Inicio</a>
         </li>
         <li class="nav-item">
+        <a style="color: white;" class="nav-link" href="../Administrador/pages/articulos.php">Articulos</a>
+        </li>
+        <li class="nav-item">
         <a style="color: white;" class="nav-link" href="../Administrador/CRUD.php">Registrar personas</a>
         </li>
     </ul>
