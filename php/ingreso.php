@@ -24,6 +24,7 @@ if(!$user=="" && !$pass==""){
                 $_SESSION['id_ingreso'] = $id;
                 $_SESSION['nombre_ingreso'] = $name;
                 $_SESSION['apellido_ingreso'] = $apellido;
+                $_SESSION['rol_ingreso'] = $rol;
 
                 switch ($rol) {
                     case 1:
