@@ -117,12 +117,8 @@ include('../../php/validar_sesion.php'); ?>
                                 </tbody>
                             </table>
                           </div>
-                          <br/>
-    
-                          
+                          <br/>            
                           <div>
-                            
-                        
                     </div>
             </div>
         </div>
@@ -137,8 +133,7 @@ include('../../php/validar_sesion.php'); ?>
         <script>
         // Initialize the DataTable
         $(document).ready(function () {
-            $('#example').DataTable({
-                
+            $('#example').DataTable({    
                 // Enable the searching
                 // of the DataTable
                 //searching: true
