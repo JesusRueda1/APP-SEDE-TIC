@@ -126,7 +126,6 @@ include('php/datetime.php');
                             </div>
                           <thead>
                             <tr>
-                              <th>ID</th> 
                               <th>Nombre</th> 
                               <th>Apellido</th>
                               <th>Documento</th>
@@ -142,7 +141,6 @@ include('php/datetime.php');
                             <tbody><?php include('php/consultas.php'); 
                             while($row = mysqli_fetch_array($query)){ ?>
                             <tr>
-                            <td><?php echo $row['ID'];?></td>
                             <td>
                                 <!-- <input type="hidden" name="id_articulo" value="<?php //echo $row['ID'];?>"> -->
                                 <?php echo $row['nombre'];?>
@@ -213,25 +211,29 @@ include('php/datetime.php');
         // Initialize the DataTable
         $(document).ready(function () {
             $('#example').DataTable({
+                
                 // Enable the searching
                 // of the DataTable
-                searching: true
+                //searching: true
+                "language": {
+                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
             });
         });
     </script>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-        <script src="../../data-table/datatables.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    <script src="../../data-table/datatables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
      
     <script>
         let boton = document.getElementById('buscar');
@@ -324,56 +326,31 @@ include('php/datetime.php');
                                 
     </script>
     <script>
-        /* let salid = document.getElementById('salida');
-        function salidaa(){
-            var id = $(this).attr("id-articulo");
-            function enviar(){
-                var parametroAPasar = 
-                    {
-                        "id_articulos" : id,
-                    };
-                    //alert(`el id es:  ${id}`);
-                    
-                    $.ajax({
-                        data: parametroAPasar,
-                        url: 'php/salida.php',
-                        type: 'POST',
-                    });
-                }
-            enviar();
-            window.location.reload();
-        }
-        salid.onclick = salidaa;
-         */
-    </script>
-    <script>
         initSalida();
+
 
         function initSalida() {
             $("#salida").click(function(e) {
-            e.preventDefault();
-            var id = $(this).attr("id-articulo");
-            var boton = $(this)[0];
-            boton.blur();
+                e.preventDefault();
+                var id = $(this).attr("id-articulo");
+                var boton = $(this)[0];
+                boton.blur();
 
-            var agree = confirm('¿Esta seguro que desea darle salida a la persona?', 
-                function(){ 
-                $.ajax({
-                    type: "POST",
-                    url: "php/salida.php",
-                    data: 'id_articulos='+id,
-                    success: function(data){
-                    alert(data, 1);
-                    window.location.reload();
-                }
-            });
-        }, 
-        function(){ 
-            alert('Cancelado');
-            window.location.reload();
-        }
-        );
-        /* window.location.reload(); */
+                if (confirm("¿Esta seguro que desea darle salida a la persona?")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "php/salida.php",
+                        data: 'id_articulos='+id,
+                        success: function(data){
+                            alert(data, 1);
+                            window.location.reload();
+                        }
+                    });
+                } else {
+                    alert("Cancelado!");
+                }           
+             
+            /* window.location.reload(); */
             });
         }
     </script>
