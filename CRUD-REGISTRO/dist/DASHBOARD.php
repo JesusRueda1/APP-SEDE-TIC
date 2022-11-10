@@ -1,12 +1,11 @@
 <?php 
 session_start();
 $nombreCompleto = $_SESSION['nombre_ingreso']." ".$_SESSION['apellido_ingreso'];
-$doc = null;$nombre = null;$apellido = null;$articulo = null;$rol = null;$id_rol = null;$documentos=null;
+$doc = null;$nombre = null;$apellido = null;$rol = null;$id_rol = null;$documentos=null;
 if(!empty($_SESSION['documento']) && !empty($_SESSION['documentos']) && !empty($_SESSION['nombre']) && !empty($_SESSION['apellido']) && !empty($_SESSION['articulo']) && !empty($_SESSION['roless']) && !empty($_SESSION['id_rol'])){
     $doc = $_SESSION['documento'];
     $nombre = $_SESSION['nombre'];
     $apellido = $_SESSION['apellido'];
-    $articulo = $_SESSION['articulo'];
     $rol = $_SESSION['roless'];
     $id_rol = $_SESSION['id_rol'];
     $documentos = $_SESSION['documentos'];
@@ -29,21 +28,7 @@ include('php/datetime.php');
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="../../bootstrap.trabajo/css/bootstrap.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <!-- jQuery -->
-    <script type="text/javascript" 
-        src="https://code.jquery.com/jquery-3.5.1.js">
-    </script>
-  
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href=
-"https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
-  
-    <!-- DataTables JS -->
-    <script src=
-"https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js">
-    </script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <!-- Estilos de la caja xD -->    
     <style>
         .submit-hv:hover{
@@ -52,12 +37,9 @@ include('php/datetime.php');
     </style>
     </head>
     <body class="sb-nav-fixed">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #57a639;">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="#" style="color: white;"><img src="images/icon_page.png" height="60" alt="Logo de la pagina" /></a>
+            <a class="navbar-brand ps-2" href="#" style="color: white;"><img src="images/icon_page.png" height="60" alt="Logo de la pagina" /></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
@@ -72,9 +54,8 @@ include('php/datetime.php');
                 </li>
             </ul>
         </nav>
-        <div class="container">
-        <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
+        <div id="layoutSidenav" style="display: flex;align-items: center;justify-content: center;"> 
+            <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="background-color:#57a639;">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
@@ -95,118 +76,134 @@ include('php/datetime.php');
                     </div>
                 </nav>
             </div>
-           <div class="caja"> 
-            <header class="header" id="header">
-                <figure class="logo">
-                  <img src="images/icon_page.png" height="60" alt="Logo de la pagina" />
-                </figure>
-                <h3 class="text-start">Registro de articulos</h3>
-                  
-              </header>
-            <br/>
-            <div class="containter-fluid">
-                            <form action="php/codigo_php.php" method="POST">
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <input type="text" class="form-control" placeholder="Documento" name="documento" id="document" value="<?php echo $doc?>">
-                                    </div>
-                                    <div class="col-lg-1">
-                                        <button type="button" id="buscar" onclick="" class="submit submit-hv" style="border-radius:10px;">Buscar</button>
-                                        <!-- <input type="submit" name="submit" id="buscar" value="buscar" class="submit submit-hv"style="border-radius:10px;"> -->
-                                    </div>
+            <div id="layoutSidenav_content">
+                <div class="container-fluid px-12ks">
+                    <div class="row">
+                        <div class="caja"> 
+                            <div class="col-lg-12">
+                                <header class="header" id="header">
+                                    <figure class="logo">
+                                    <img src="images/icon_page.png" height="60" alt="Logo de la pagina" />
+                                    </figure>
+                                    <h3 class="mt-4 text-start">Registro de articulos</h3>   
+                                </header>
+                                <br>
+                                <div class="containter-fluid" >
+                                    <form action="php/codigo_php.php" method="POST">
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <input type="text" class="form-control" placeholder="Documento" name="documento" id="document" value="<?php echo $doc?>">
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <button type="button" id="buscar" onclick="" class="submit submit-hv" style="border-radius:10px;">Buscar</button>
+                                                <!-- <input type="submit" name="submit" id="buscar" value="buscar" class="submit submit-hv"style="border-radius:10px;"> -->
+                                            </div>
+                                        </div>
+                                    </form><br>
+                                    <div id="register"></div>
                                 </div>
-                            </form><br>
-                            <div id="register"></div>
-                      </div>
-            
-            <div class="tablita">
-                        <table class="tabla" id="example">
-                            <div class="container-fluid" style="padding:0;margin:0;"> 
-                                    <div class="row form-group">
                             </div>
-                          <thead>
-                            <tr>
-                              <th>Nombre</th> 
-                              <th>Apellido</th>
-                              <th>Documento</th>
-                              <th>Rol</th>
-                              <th>Articulo</th>
-                              <th>Fecha</th>
-                              <th>Datos-Entrada</th>
-                              <th>Datos-Salida</th>
-                              <th>Accion</th>
-                            
-                            </tr>
-                          </thead>
-                            <tbody><?php include('php/consultas.php'); 
-                            while($row = mysqli_fetch_array($query)){ ?>
-                            <tr>
-                            <td>
-                                <!-- <input type="hidden" name="id_articulo" value="<?php //echo $row['ID'];?>"> -->
-                                <?php echo $row['nombre'];?>
-                            </td>
-                            <td><?php echo $row['apellido']; ?></td>
-                            <td><?php echo $row['documento'];?></td>
-                            <td><?php 
-                            $rol = $row['rol']; 
-                            switch ($rol) {
-                                case 1:
-                                    echo "administrador";
-                                    break;
-                                case 2:
-                                    echo "vigilante";
-                                    break;
-                                case 3:
-                                    echo "instructor";
-                                    break;
-                                case 4:
-                                    echo "aprendiz";
-                                    break;
-                                
-                                default:
-                                    echo "visitante";
-                                    break;
-                            }?></td>
-                            <td><?php echo $row['articulo'];?></td>
-                            <td><?php echo $row['fecha'];?></td>
-                            <td><?php echo $row['datos_entrada'];?></td>
-                            <td><?php echo $row['datos_salida'];?></td>
-                            
-                                <td>    
-                                    <a href="#" class="enviar" id="salida" style="border-radius:10px;" id-articulo="<?php echo $row['ID'];?>">Salida</a>
-                                </td>
-                            </tr>
-                            <?php }?>
-                            </tbody>
-                        </table>
-                      </div>
-                      <br/>
+                            <div class="col-lg-12">
 
-                      
-                      <div>
-                        
-                    
-                </div>
-        </div>
-    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container px-4">
-                        <div class="d-flex align-items-center justify-content-between standar">
-                            <div class="text-muted">Copyright &copy; Hecho por Jesús Rueda y Jesús Mosquera</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">SENA</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <div class="tablita dataTable-container">
+                                    <table class="tabla" id="example">
+                                        <div class="container-fluid" style="padding:0;margin:0;"> 
+                                                <div class="row form-group">
+                                        </div>
+                                        <thead> 
+                                            <th>Nombre</th> 
+                                            <th>Apellido</th>
+                                            <th>Documento</th>
+                                            <th>Rol</th>
+                                            <th>Articulo</th>
+                                            <th>Fecha</th>
+                                            <th>Datos-Entrada</th>
+                                            <th>Datos-Salida</th>
+                                            <th>Accion</th>
+                                        </thead>
+                                        <tbody><?php include('php/consultas.php'); 
+                                        while($row = mysqli_fetch_array($query)){ ?>
+                                        <tr>
+                                            <td><?php echo $row['nombre'];?></td>
+                                            <td><?php echo $row['apellido']; ?></td>
+                                            <td><?php echo $row['documento'];?></td>
+                                            <td><?php $rol = $row['rol']; 
+                                                switch ($rol) {
+                                                    case 1:
+                                                        echo "administrador";
+                                                        break;
+                                                    case 2:
+                                                        echo "vigilante";
+                                                        break;
+                                                    case 3:
+                                                        echo "instructor";
+                                                        break;
+                                                    case 4:
+                                                        echo "aprendiz";
+                                                        break;
+                                                    
+                                                    default:
+                                                        echo "visitante";
+                                                        break;
+                                                }?>
+                                            </td>
+                                            <td><?php echo $row['articulo'];?></td>
+                                            <td><?php echo $row['fecha'];?></td>
+                                            <td><?php echo $row['datos_entrada'];?></td>
+                                            <td><?php echo $row['datos_salida'];?></td>                           
+                                            <td>  
+                                            <?php if ($row['datos_salida']===NULL){ ?>
+                                                <a href="#" class="enviar" style="border-radius:10px;" id-articulo="<?php echo $row['ID'];?>">Salida</a>
+                                            <?php }else{ ?>
+                                                <a href="#" class="btn btn-secondary" readonly>No Disponible</a>
+                                            <?php }?>  
+                                                
+                                            </td>
+                                        </tr>
+                                        <?php }?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div style="margin-top:9%;">
+                                <footer class="py-4 bg-light mt-auto">
+                                    <div class="container px-12">
+                                        <div class="d-flex align-items-center justify-content-between standar">
+                                            <div class="text-muted">Copyright &copy; Hecho por Jesús Rueda y Jesús Mosquera</div>
+                                            <div>
+                                                <a href="#">Privacy Policy</a>
+                                                &middot;
+                                                <a href="#">SENA</a>
+                                                &middot;
+                                                <a href="#">Terms &amp; Conditions</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </footer>
                             </div>
                         </div>
                     </div>
-                </footer>
-            </div>
-        </div>
-    </div>
+                </div>
+                    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    <script src="../../data-table/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
     <script>
         // Initialize the DataTable
         $(document).ready(function () {
@@ -221,19 +218,6 @@ include('php/datetime.php');
             });
         });
     </script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
-    <script src="../../data-table/datatables.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
      
     <script>
         let boton = document.getElementById('buscar');
@@ -306,31 +290,23 @@ include('php/datetime.php');
     </script>
     <script>
         let mensaje= "se proceso con exito";
-            function ejecutar(){
-                let doc = $('#document').val();
-                
-                
-                var parametros = 
-                    {
-                        "documento" : doc,
-                    };
-                    alert(`el documento es ${doc}`);
-                    
-                    
-                    $.ajax({
-                        data: parametros,
-                        url: 'php/codigo_php.php',
-                        type: 'POST',
-                    });
-            }
-                                
+        function ejecutar(){
+            let doc = $('#document').val();                
+            var parametros = {
+                "documento" : doc,
+            };                    
+            
+            $.ajax({
+                data: parametros,
+                url: 'php/codigo_php.php',
+                type: 'POST',
+            });
+        }                                
     </script>
     <script>
         initSalida();
-
-
         function initSalida() {
-            $("#salida").click(function(e) {
+            $(".enviar").click(function(e) {
                 e.preventDefault();
                 var id = $(this).attr("id-articulo");
                 var boton = $(this)[0];
@@ -346,11 +322,7 @@ include('php/datetime.php');
                             window.location.reload();
                         }
                     });
-                } else {
-                    alert("Cancelado!");
-                }           
-             
-            /* window.location.reload(); */
+                }          
             });
         }
     </script>

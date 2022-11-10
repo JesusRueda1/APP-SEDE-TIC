@@ -96,14 +96,13 @@ form{
     text-align: center;
 }
 .tablita{
-    margin-left: 10%;
     margin-top:  8%;    
 }
 /*Tablaaaaaa Estilos*/
 .tabla{
     margin-top: 1%;
-border-collapse: collapse; /*Esta propiedad hace que parezca mas una tabla*/
-font-family: 'Quicksand', sans-serif;
+    border-collapse: collapse; 
+    font-family: 'Quicksand', sans-serif;
 }
 table tr th{
     border: 1px solid #D5D9D9;
@@ -123,11 +122,9 @@ td {
 }
 .caja label{
     margin-top:  5%;    
-
     font-family: 'Quicksand', sans-serif;
 }
 .caja input{
-  
     text-align: center;
     font-family: 'Quicksand', sans-serif;  
 }
