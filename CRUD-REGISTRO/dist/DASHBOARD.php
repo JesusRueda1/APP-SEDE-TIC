@@ -2,7 +2,7 @@
 session_start();
 $nombreCompleto = $_SESSION['nombre_ingreso']." ".$_SESSION['apellido_ingreso'];
 $doc = null;$nombre = null;$apellido = null;$rol = null;$id_rol = null;$documentos=null;
-if(!empty($_SESSION['documento']) && !empty($_SESSION['documentos']) && !empty($_SESSION['nombre']) && !empty($_SESSION['apellido']) && !empty($_SESSION['articulo']) && !empty($_SESSION['roless']) && !empty($_SESSION['id_rol'])){
+if(!empty($_SESSION['documento']) && !empty($_SESSION['documentos']) && !empty($_SESSION['nombre']) && !empty($_SESSION['apellido']) && !empty($_SESSION['roless']) && !empty($_SESSION['id_rol'])){
     $doc = $_SESSION['documento'];
     $nombre = $_SESSION['nombre'];
     $apellido = $_SESSION['apellido'];
@@ -197,6 +197,8 @@ include('php/datetime.php');
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
