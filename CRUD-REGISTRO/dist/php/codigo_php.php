@@ -23,11 +23,11 @@ if($query6){
        $rol = $row['roless'];
        $documento = $row['documento'];
     }
-    echo "\n". $_SESSION['nombre'] = $nombre;
-    echo "\n". $_SESSION['apellido'] = $apellido;
-    echo "\n". $_SESSION['roless'] = $rol;
-    echo "\n". $_SESSION['id_rol'] = $id_rol;
-    echo "\n". $_SESSION['documentos'] = $documento;
+    $_SESSION['nombre'] = $nombre;
+    $_SESSION['apellido'] = $apellido;
+    $_SESSION['roless'] = $rol;
+    $_SESSION['id_rol'] = $id_rol;
+    $_SESSION['documentos'] = $documento;
 
 
     header('Location: ../DASHBOARD.php'); 
