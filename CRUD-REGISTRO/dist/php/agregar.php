@@ -1,6 +1,8 @@
 <?php
 include('../../../conexion/conexion.php');
 include('datetime.php');
+session_start();
+$nombreCompleto = $_SESSION['nombre_ingreso']." ".$_SESSION['apellido_ingreso'];
 $nombre = $_POST['nom'];
 $apellido= $_POST['ape'];
 $Doc = $_POST['doc'];
@@ -14,7 +16,7 @@ if(mysqli_num_rows($query)>0){
     if($rs = mysqli_fetch_array($query)){
         $id = $rs['id'];
     }
-    $SQL2 = "INSERT INTO `articulo` (`id_persona`, `articulo`, `fecha`, `datos_entrada`, `datos_salida`, `observaciones`) VALUES ($id, '$articulo', '$fecha','$hora' , NULL, '$observaciones') ";
+    $SQL2 = "INSERT INTO `articulo` (`usuario`,`id_persona`, `articulo`, `fecha`, `datos_entrada`, `datos_salida`, `observaciones`) VALUES ('$nombreCompleto',$id, '$articulo', '$fecha','$hora' , NULL, '$observaciones') ";
     $query2 = mysqli_query($conexion,$SQL2);
     if ($query2){
         echo"
@@ -41,7 +43,7 @@ if(mysqli_num_rows($query)>0){
             if($row = mysqli_fetch_array($query4)){
                 $id_p = $row['id'];
             }
-            $SQL5 = "INSERT INTO `articulo` (`id_persona`, `articulo`, `fecha`, `datos_entrada`, `datos_salida`, `observaciones`) VALUES ('$id_p', '$articulo', '$fecha', '$hora', NULL, '$observaciones');";
+            $SQL5 = "INSERT INTO `articulo` (`usuario`,`id_persona`, `articulo`, `fecha`, `datos_entrada`, `datos_salida`, `observaciones`) VALUES ('$nombreCompleto','$id_p', '$articulo', '$fecha', '$hora', NULL, '$observaciones');";
             $query5 = mysqli_query($conexion,$SQL5);
             if ($query5) {
                 echo "

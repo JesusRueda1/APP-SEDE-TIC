@@ -61,7 +61,7 @@ include('../../php/validar_sesion.php'); ?>
             <!-- Aqui va el resto del codigo, tablas etc -->
             <br><br>
         <h1 class="text-center">Control de articulos</h1>
-        <div class="container-fluid" style="margin-left:-5%;">
+        <div class="container-fluid" style="">
             <div class="tablita">
                             <table class="tabla" id="example" style="border:0;">
                                 <div class="container-fluid" style="padding:0;margin:0;"> 
@@ -69,6 +69,7 @@ include('../../php/validar_sesion.php'); ?>
                                 </div>
                               <thead>
                                 <tr>
+                                  <th>Vigilante</th>
                                   <th>Nombre</th> 
                                   <th>Apellido</th>
                                   <th>Documento</th>
@@ -83,9 +84,8 @@ include('../../php/validar_sesion.php'); ?>
                                 <tbody><?php include('../../CRUD-REGISTRO/dist/php/consultas.php'); 
                                 while($row = mysqli_fetch_array($query)){ ?>
                                 <tr>
-                                <td>
-                                    <?php echo $row['nombre'];?>
-                                </td>
+                                <td><?php echo $row['usuario'];?></td>
+                                <td><?php echo $row['nombre'];?></td>
                                 <td><?php echo $row['apellido']; ?></td>
                                 <td><?php echo $row['documento'];?></td>
                                 <td><?php 
