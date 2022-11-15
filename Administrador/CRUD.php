@@ -63,7 +63,7 @@
                   $id_rol = $rs['rol'];
                   $rol_name = $rs['Roles'];
                 }
-                $SQL2 = "SELECT *,roles.`descripcion` AS Roles FROM persona INNER JOIN roles ON `persona`.`rol`= roles.`id` WHERE rol='1' OR rol='2';";
+                $SQL2 = "SELECT *,persona.id AS id_persona,roles.`descripcion` AS Roles FROM persona INNER JOIN roles ON `persona`.`rol`= roles.`id` WHERE rol='1' OR rol='2';";
                 $query2 = mysqli_query($conexion,$SQL2);
                 while($mostrar = mysqli_fetch_array($query2)){
 
@@ -75,7 +75,7 @@
               <td><?php echo $mostrar['correo'] ?></td>
               <td><?php echo $mostrar['Roles'] ?></td>
               <td>
-                <a href="" class="btn btn-danger borrar" borrar-id="<?php echo $mostrar['id'] ?>"> <span class="glyphicon glyphicon-trash"></span> Borrar</a>
+                <a href="" class="btn btn-danger borrar" borrar-id="<?php echo $mostrar['id_persona'] ?>"> <span class="glyphicon glyphicon-trash"></span> Borrar</a>
               </td>
               <?php //include('include/BorrarEditarModal.php')?>
             </tr>

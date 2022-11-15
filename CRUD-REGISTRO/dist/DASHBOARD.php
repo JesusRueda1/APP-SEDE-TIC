@@ -156,7 +156,7 @@ include('php/datetime.php');
                                             <td><?php echo $row['datos_salida'];?></td>                           
                                             <td>  
                                             <?php if ($row['datos_salida']===NULL){ ?>
-                                                <a href="#" class="enviar" style="border-radius:10px;" id-articulo="<?php echo $row['ID'];?>">Salida</a>
+                                                <a href="#" class="enviar" style="border-radius:10px; text-align: center;" id-articulo="<?php echo $row['ID'];?>">Salida</a>
                                             <?php }else{ ?>
                                                 <a href="#" class="btn btn-secondary" readonly>No Disponible</a>
                                             <?php }?>  
