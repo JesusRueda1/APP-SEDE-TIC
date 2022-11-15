@@ -21,7 +21,7 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg" style="background-color: #57a639; margin: left 50%; color:white ;" >
             <div class="container px-12">
-                <a class="navbar-brand" href="#" style="color: white;"><img src="../img/icon_page - copia.png" height="50" alt="Logo de la pagina"></a>
+                <a class="navbar-brand" href="#" style="color: white;"><img src="../img/logo_sena_blanco.png" height="50" alt="Logo de la pagina"></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active"  style="color: white;" aria-current="page" href="CRUD.php">Personal</a></li>

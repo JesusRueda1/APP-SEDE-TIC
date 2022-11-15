@@ -40,7 +40,7 @@ include('php/datetime.php');
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #57a639;">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-2" href="#" style="color: white;"><img src="images/icon_page.png" height="60" alt="Logo de la pagina" /></a>
+            <a class="navbar-brand ps-2" href="#" style="color: white;"><img src="../../img/logo_sena_blanco.png" height="60" alt="Logo de la pagina" /></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
@@ -90,7 +90,7 @@ include('php/datetime.php');
                                 </header>
                                 <br>
                                 <div class="containter-fluid" >
-                                    <form action="php/codigo_php.php" method="POST">
+                                    <form method="POST">
                                         <div class="row">
                                             <div class="col-lg-2">
                                                 <input type="text" class="form-control" placeholder="Documento" name="documento" id="document" value="<?php echo $doc?>">
@@ -117,6 +117,7 @@ include('php/datetime.php');
                                             <th>Documento</th>
                                             <th>Rol</th>
                                             <th>Articulo</th>
+                                            <th>Observación</th>
                                             <th>Fecha</th>
                                             <th>Datos-Entrada</th>
                                             <th>Datos-Salida</th>
@@ -149,6 +150,7 @@ include('php/datetime.php');
                                                 }?>
                                             </td>
                                             <td><?php echo $row['articulo'];?></td>
+                                            <td><?php echo $row['observaciones'];?></td>
                                             <td><?php echo $row['fecha'];?></td>
                                             <td><?php echo $row['datos_entrada'];?></td>
                                             <td><?php echo $row['datos_salida'];?></td>                           
@@ -225,7 +227,7 @@ include('php/datetime.php');
         let mostrar = document.getElementById('register');
         function click(){
             ejecutar();
-            mostrar.innerHTML = `
+            mostrar.innerHTML = ` <?php include('php/codigo_php.php');?>   /*
                 <form action="php/agregar.php" method="POST">                          
                     <div class="caja">
                         <div class="row">
@@ -242,7 +244,7 @@ include('php/datetime.php');
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="rol">Rol</label> 
-                                <?php 
+                                <?php /*
                                 switch ($id_rol) {
                                     case 1:
                                         $rol ="administrador";
@@ -267,7 +269,7 @@ include('php/datetime.php');
                                 <option selected value="<?php echo $id_rol; ?>"><?php echo $rol; ?></option>
                                 <?php while($row = mysqli_fetch_array($query3)){?>
                                     <option value="<?php echo $row['id']; ?>"><?php  echo $row['descripcion']; ?></option>
-                                    <?php } ?>
+                                    <?php }*/ ?>
                                     </select>
                             </div>
                             <div class="col-md-3">
@@ -285,7 +287,7 @@ include('php/datetime.php');
                         </div>
                     </div>
                 </form>
-            `;
+            */`;
         }
         boton.onclick = click;
     </script>

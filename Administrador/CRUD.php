@@ -12,10 +12,12 @@
     <link rel="icon" href="../img/icon_page.png">
 </head>
 <body>
+
+<!--  -->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
   <nav class="navbar navbar-expand-lg" style="background-color: #57a639; margin: left 50%; color:white ;" >
       <div class="container px-12">
-          <a class="navbar-brand" href="#" style="color: white;"><img src="../img/icon_page - copia.png" height="50" alt="Logo de la pagina"></a>
+          <a class="navbar-brand" href="#" style="color: white;"><img src="../img/logo_sena_blanco.png" height="50" alt="Logo de la pagina"></a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li class="nav-item"><a class="nav-link active"  style="color: white;" aria-current="page" href="index.php">Inicio</a></li>
@@ -54,39 +56,26 @@
           <tbody>
               <?php
                 /* $sql= "SELECT `usuario`.`id`, login.`usuario` AS Usuario, `usuario`.`nombres`,`usuario`.`apellidos`,`usuario`.`tipoDoc`,`usuario`.`Doc`,`usuario`.`Rol` FROM usuario INNER JOIN login ON `usuario`.`id_login`=login.`id`"; */
-                $sql= "SELECT * FROM persona";
+                $sql= "SELECT *,roles.`descripcion` AS Roles FROM persona INNER JOIN roles ON `persona`.`rol`= roles.`id`";
                 $query = mysqli_query($conexion,$sql);
-                while($mostrar = mysqli_fetch_array($query)){
-                  $id = $mostrar['id'];
+                while($rs = mysqli_fetch_array($query)){
+                  $id = $rs['id'];
+                  $id_rol = $rs['rol'];
+                  $rol_name = $rs['Roles'];
+                }
+                $SQL2 = "SELECT *,roles.`descripcion` AS Roles FROM persona INNER JOIN roles ON `persona`.`rol`= roles.`id` WHERE rol='1' OR rol='2';";
+                $query2 = mysqli_query($conexion,$SQL2);
+                while($mostrar = mysqli_fetch_array($query2)){
+
               ?>
             <tr>
               <td><?php echo $mostrar['documento'] ?></td>
               <td><?php echo $mostrar['nombre'] ?></td>
               <td><?php echo $mostrar['apellido'] ?></td>
               <td><?php echo $mostrar['correo'] ?></td>
-              <?php 
-              $rol = $mostrar['rol'];
-              switch ($rol) {
-                case 1:
-                  $roles = "Administrador";
-                  break;
-                case 2:
-                  $roles = "Vigilante";
-                  break;
-                case 3:
-                  $roles = "Instructor";
-                  break;
-                case 4:
-                  $roles = "Aprendiz";
-                default:
-                  $roles = "Visitante";
-                  break;
-              }
-              ?>
-              <td><?php echo $roles ?></td>
+              <td><?php echo $mostrar['Roles'] ?></td>
               <td>
-                <a href="#edit_<?php echo $id ?>" class="btn btn-success " data-bs-toggle="modal" ><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                <a href="#delete_<?php echo $id ?>" class="btn btn-danger" data-bs-toggle="modal"> <span class="glyphicon glyphicon-trash"></span> Borrar</a>
+                <a href="" class="btn btn-danger borrar" borrar-id="<?php echo $mostrar['id'] ?>"> <span class="glyphicon glyphicon-trash"></span> Borrar</a>
               </td>
               <?php //include('include/BorrarEditarModal.php')?>
             </tr>
@@ -117,7 +106,35 @@
         myInput.focus()
       })
     </script>
+    <!--  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!--  -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/scripts.js"></script>
+<script>
+        initSalida();
+        function initSalida() {
+            $(".borrar").click(function(e) {
+                e.preventDefault();
+                var id = $(this).attr("borrar-id");
+                var boton = $(this)[0];
+                boton.blur();
+
+                if (confirm("¿Esta seguro que desea borrar a está persona?")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "php/borrar_crud.php",
+                        data: 'id='+id,
+                        success: function(data){
+                            alert(data, 1);
+                            window.location.reload();
+                        }
+                    });
+                }          
+            });
+        }
+    </script>
 </body>
 </html>

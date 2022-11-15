@@ -43,7 +43,7 @@ include('../../php/validar_sesion.php'); ?>
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <nav class="navbar navbar-expand-lg" style="background-color: #57a639; margin: left 50%; color:white ;" >
                 <div class="container px-12">
-                    <a class="navbar-brand" href="#" style="color: white;"><img src="../../img/icon_page - copia.png" height="50" alt="Logo de la pagina"></a>
+                    <a class="navbar-brand" href="#" style="color: white;"><img src="../../img/logo_sena_blanco.png" height="50" alt="Logo de la pagina"></a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" style="color: white;" href="../index.php">Inicio</a></li>
@@ -55,13 +55,13 @@ include('../../php/validar_sesion.php'); ?>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="../../configuracion/cambiar_contraseña.php">Cambiar contraseña</a></li> 
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="../php/cerrar_sesion.php">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item" href="../../php/cerrar_sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
             <!-- Aqui va el resto del codigo, tablas etc -->
             <br><br>
         <h1 class="text-center">Control de articulos</h1>
-        <div class="container-fluid" style="">
+        <div class="container-fluid">
             <div class="tablita">
                             <table class="tabla" id="example" style="border:0;">
                                 <div class="container-fluid" style="padding:0;margin:0;"> 
@@ -75,6 +75,7 @@ include('../../php/validar_sesion.php'); ?>
                                   <th>Documento</th>
                                   <th>Rol</th>
                                   <th>Articulo</th>
+                                  <th>Observaciones</th>
                                   <th>Fecha</th>
                                   <th>Datos-Entrada</th>
                                   <th>Datos-Salida</th>
@@ -109,6 +110,7 @@ include('../../php/validar_sesion.php'); ?>
                                         break;
                                 }?></td>
                                 <td><?php echo $row['articulo'];?></td>
+                                <td><?php echo $row['observaciones'];?></td>
                                 <td><?php echo $row['fecha'];?></td>
                                 <td><?php echo $row['datos_entrada'];?></td>
                                 <td><?php echo $row['datos_salida'];?></td>

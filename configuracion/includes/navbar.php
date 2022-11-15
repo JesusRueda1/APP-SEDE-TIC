@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg " style="background-color: #57a639;color:;">
+<nav class="navbar navbar-expand-lg " style="background-color: #57a639;">
 <div class="container-fluid">
-    <a class="navbar-brand ps-3" href="!#" style="color: white;"><img src="../img/icon_page - copia.png" height="40"></a>
+    <a class="navbar-brand ps-3" href="!#" style="color: white;"><img src="../img/logo_sena_blanco.png" height="40"></a>
     <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
         <li class="nav-item">
