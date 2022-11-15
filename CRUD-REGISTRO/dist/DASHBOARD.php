@@ -129,26 +129,7 @@ include('php/datetime.php');
                                             <td><?php echo $row['nombre'];?></td>
                                             <td><?php echo $row['apellido']; ?></td>
                                             <td><?php echo $row['documento'];?></td>
-                                            <td><?php $rol = $row['rol']; 
-                                                switch ($rol) {
-                                                    case 1:
-                                                        echo "administrador";
-                                                        break;
-                                                    case 2:
-                                                        echo "vigilante";
-                                                        break;
-                                                    case 3:
-                                                        echo "instructor";
-                                                        break;
-                                                    case 4:
-                                                        echo "aprendiz";
-                                                        break;
-                                                    
-                                                    default:
-                                                        echo "visitante";
-                                                        break;
-                                                }?>
-                                            </td>
+                                            <td><?php echo $row['Roles'];?></td>
                                             <td><?php echo $row['articulo'];?></td>
                                             <td><?php echo $row['observaciones'];?></td>
                                             <td><?php echo $row['fecha'];?></td>
