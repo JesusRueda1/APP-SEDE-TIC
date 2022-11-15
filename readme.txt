@@ -1,1 +1,1 @@
-Falta agregar un filtro por fecha, que traiga por lo menos el ultimo mes o algo asíj
+Falta agregar un filtro por fecha, que traiga por lo menos el ultimo mes o algo así
