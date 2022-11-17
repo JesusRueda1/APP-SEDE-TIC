@@ -107,54 +107,18 @@ include('php/datetime.php');
                             <div class="col-lg-12">
                                 <div class="tablita dataTable-container">
                                     <div class="row">
-                                        <form action="php/buscarfecha.php" method="POST">
+                                        <form method="POST">
                                             <div class="col-lg-2">
                                                 <label>Fecha:</label>
-                                                <input type="date" name="fecha" id="fecha" value="<?php echo $fecha?>">
-                                                <input class="form-control btn btn-primary" type="button" value="filtrar">
+                                                <input type="date" name="fecha" id="fecha" value="<?php echo $fecha ?>">
+                                                <!-- <button class="form-control btn btn-primary">Filtrar</button> -->
+                                                <input class="form-control btn btn-primary btn-fecha" type="button" value="filtrar">
                                             </div>
                                         </form>
                                     </div>
-                                    <table class="tabla" id="example">
-                                        <div class="container-fluid" style="padding:0;margin:0;"> 
-                                                <div class="row form-group">
-                                        </div>
-                                        <thead> 
-                                            <th>Nombre</th> 
-                                            <th>Apellido</th>
-                                            <th>Documento</th>
-                                            <th>Rol</th>
-                                            <th>Articulo</th>
-                                            <th>Observación</th>
-                                            <th>Fecha</th>
-                                            <th>Datos-Entrada</th>
-                                            <th>Datos-Salida</th>
-                                            <th>Accion</th>
-                                        </thead>
-                                        <tbody><?php include('php/consultas.php'); 
-                                        while($row = mysqli_fetch_array($query)){ ?>
-                                        <tr>
-                                            <td><?php echo $row['nombre'];?></td>
-                                            <td><?php echo $row['apellido']; ?></td>
-                                            <td><?php echo $row['documento'];?></td>
-                                            <td><?php echo $row['Roles'];?></td>
-                                            <td><?php echo $row['articulo'];?></td>
-                                            <td><?php echo $row['observaciones'];?></td>
-                                            <td><?php echo $row['fecha'];?></td>
-                                            <td><?php echo $row['datos_entrada'];?></td>
-                                            <td><?php echo $row['datos_salida'];?></td>                           
-                                            <td>  
-                                            <?php if ($row['datos_salida']===NULL){ ?>
-                                                <a href="#" class="enviar" style="border-radius:10px; text-align: center;" id-articulo="<?php echo $row['ID'];?>">Salida</a>
-                                            <?php }else{ ?>
-                                                <a href="#" class="btn btn-secondary" readonly>No Disponible</a>
-                                            <?php }?>  
-                                                
-                                            </td>
-                                        </tr>
-                                        <?php }?>
-                                        </tbody>
-                                    </table>
+                                    <div id="mostrar-tabla">
+
+                                    </div>
                                 </div>
                             </div>
                             <div style="margin-top:9%;">
@@ -257,7 +221,23 @@ include('php/datetime.php');
     </script>
     <script>
         $( document ).ready(function() {
-            
+            //php/buscarfecha.php
+            mandarFecha();
+            function mandarFecha() {
+                $(".btn-fecha").click(function(e) {
+                    let fecha = $('#fecha').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "php/buscarfecha.php",
+                        data: {
+                            'fecha': fecha,
+                        },
+                        success: function(data){
+                            $("#mostrar-tabla").html(data);
+                        }
+                    });
+                });
+            }
         });
     </script>
     </body>
