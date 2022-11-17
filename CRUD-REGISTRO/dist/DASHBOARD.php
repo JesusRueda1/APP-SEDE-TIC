@@ -105,8 +105,16 @@ include('php/datetime.php');
                                 </div>
                             </div>
                             <div class="col-lg-12">
-
                                 <div class="tablita dataTable-container">
+                                    <div class="row">
+                                        <form action="php/buscarfecha.php" method="POST">
+                                            <div class="col-lg-2">
+                                                <label>Fecha:</label>
+                                                <input type="date" name="fecha" id="fecha" value="<?php echo $fecha?>">
+                                                <input class="form-control btn btn-primary" type="button" value="filtrar">
+                                            </div>
+                                        </form>
+                                    </div>
                                     <table class="tabla" id="example">
                                         <div class="container-fluid" style="padding:0;margin:0;"> 
                                                 <div class="row form-group">
@@ -246,6 +254,11 @@ include('php/datetime.php');
                 }          
             });
         }
+    </script>
+    <script>
+        $( document ).ready(function() {
+            
+        });
     </script>
     </body>
 </html>
