@@ -17,12 +17,6 @@ if($query6){
        $rol = $row['Roles'];
        $documento = $row['documento'];
     }
-    
-    /* $_SESSION['nombre'] = $nombre;
-    $_SESSION['apellido'] = $apellido;
-    $_SESSION['Roles'] = $rol;
-    $_SESSION['id_rol'] = $id_rol;
-    $_SESSION['documentos'] = $documento; */
     if($nombre != "" && $apellido != "" && $id_rol != "" && $rol != "" && $documento != ""){
     ?>
 
