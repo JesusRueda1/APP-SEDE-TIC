@@ -1,5 +1,6 @@
 <?php session_start();
-include('../../php/validar_sesion.php'); ?>
+include('../../php/validar_sesion.php');
+include('../../CRUD-REGISTRO/dist/php/datetime.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -61,50 +62,22 @@ include('../../php/validar_sesion.php'); ?>
             <!-- Aqui va el resto del codigo, tablas etc -->
             <br><br>
         <h1 class="text-center">Control de articulos</h1>
-        <div class="container-fluid">
-            <div class="tablita">
-                            <table class="tabla" id="example" style="border:0;">
-                                <div class="container-fluid" style="padding:0;margin:0;"> 
-                                        <div class="row form-group">
-                                </div>
-                              <thead>
-                                <tr>
-                                  <th>Vigilante</th>
-                                  <th>Nombre</th> 
-                                  <th>Apellido</th>
-                                  <th>Documento</th>
-                                  <th>Rol</th>
-                                  <th>Articulo</th>
-                                  <th>Observaciones</th>
-                                  <th>Fecha</th>
-                                  <th>Datos-Entrada</th>
-                                  <th>Datos-Salida</th>
-                                
-                                </tr>
-                              </thead>
-                                <tbody><?php include('../../CRUD-REGISTRO/dist/php/consultas.php'); 
-                                while($row = mysqli_fetch_array($query)){ ?>
-                                <tr>
-                                <td><?php echo $row['usuario'];?></td>
-                                <td><?php echo $row['nombre'];?></td>
-                                <td><?php echo $row['apellido']; ?></td>
-                                <td><?php echo $row['documento'];?></td>
-                                <td><?php $rol = $row['Roles']; ?></td>
-                                <td><?php echo $row['articulo'];?></td>
-                                <td><?php echo $row['observaciones'];?></td>
-                                <td><?php echo $row['fecha'];?></td>
-                                <td><?php echo $row['datos_entrada'];?></td>
-                                <td><?php echo $row['datos_salida'];?></td>
-                                </tr>
-                                <?php }?>
-                                </tbody>
-                            </table>
-                          </div>
-                          <br/>            
-                          <div>
-                    </div>
+        <div class="col-lg-11" style="margin-left:5rem;">
+            <div class="tablita dataTable-container mt-5">
+                <div class="row">
+                    <form method="POST">
+                        <div class="col-lg-2">
+                            <label>Fecha:</label>
+                            <input type="date" name="fecha" id="fecha" onchange="mandarFecha()" value="<?php echo $fecha ?>">
+                        </div>
+                    </form>
+                </div>
+                <div id="mostrar-tabla">
+
+                </div>
             </div>
         </div>
+                    
 
 
 
@@ -126,6 +99,27 @@ include('../../php/validar_sesion.php'); ?>
                 });
             });
         </script> 
+        <script>
+            $( document ).ready(function() {
+
+                //php/buscarfecha.php
+                $("#fecha").on("change", mandarFecha);
+                mandarFecha();
+                function mandarFecha() {
+                    let fecha = $('#fecha').val();
+                        $.ajax({
+                            type: "POST",
+                            url: "../php/buscarfecha.php",
+                            data: {
+                                'fecha': fecha,
+                            },
+                            success: function(data){
+                                $("#mostrar-tabla").html(data);
+                            }
+                        });
+                    }
+            });
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

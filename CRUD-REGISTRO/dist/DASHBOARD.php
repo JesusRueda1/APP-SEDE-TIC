@@ -110,9 +110,7 @@ include('php/datetime.php');
                                         <form method="POST">
                                             <div class="col-lg-2">
                                                 <label>Fecha:</label>
-                                                <input type="date" name="fecha" id="fecha" onchange="mandarFecha()" value="<?php echo $fecha ?>"><!-- onchange="mandarFecha();" -->
-                                                <!-- <button class="form-control btn btn-primary">Filtrar</button> -->
-                                                <!-- <input class="form-control btn btn-primary btn-fecha" type="button" value="filtrar"> -->
+                                                <input type="date" name="fecha" id="fecha" onchange="mandarFecha()" value="<?php echo $fecha ?>">
                                             </div>
                                         </form>
                                     </div>
