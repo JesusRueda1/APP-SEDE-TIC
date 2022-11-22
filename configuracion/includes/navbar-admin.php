@@ -4,13 +4,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
         <li class="nav-item">
-        <a style="color: white;" class="nav-link" href="../Administrador/index.php">Inicio</a>
+            <a style="color: white;" class="nav-link" href="../Administrador/index.php">Inicio</a>
         </li>
         <li class="nav-item">
-        <a style="color: white;" class="nav-link" href="../Administrador/pages/articulos.php">Articulos</a>
+            <a style="color: white;" class="nav-link" href="../Administrador/pages/articulos.php">Articulos</a>
         </li>
         <li class="nav-item">
-        <a style="color: white;" class="nav-link" href="../Administrador/CRUD.php">Registrar personas</a>
+            <a style="color: white;" class="nav-link" href="../Administrador/CRUD.php">Registrar personas</a>
+        </li>
+        <li class="nav-item">
+            <a style="color: white;" class="nav-link" href="../Administrador/pages/añadirRoles.php">Administrar Roles</a>
         </li>
     </ul>
     </div>

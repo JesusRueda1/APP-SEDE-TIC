@@ -26,6 +26,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active"  style="color: white;" aria-current="page" href="CRUD.php">Personal</a></li>
                         <li class="nav-item"><a class="nav-link" style="color: white;" href="Pages/articulos.php">Articulos</a></li>
+                        <li class="nav-item"><a class="nav-link" style="color: white;" href="Pages/añadirRoles.php">Roles</a></li>
                     </ul>
                 </div>
             </div>

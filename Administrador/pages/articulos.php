@@ -49,6 +49,7 @@ include('../../CRUD-REGISTRO/dist/php/datetime.php'); ?>
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" style="color: white;" href="../index.php">Inicio</a></li>
                             <li class="nav-item"><a class="nav-link active"  style="color: white;" aria-current="page" href="../CRUD.php">Personal</a></li>
+                            <li class="nav-item"><a class="nav-link active"  style="color: white;" aria-current="page" href="añadirRoles.php">Rol</a></li>
                         </ul>
                     </div>
                 </div>

@@ -23,6 +23,7 @@
                   <li class="nav-item"><a class="nav-link active"  style="color: white;" aria-current="page" href="index.php">Inicio</a></li>
                   <!-- ks -->
                   <li class="nav-item"><a class="nav-link" style="color: white;" href="Pages/articulos.php">Articulos</a></li>
+                  <li class="nav-item"><a class="nav-link" style="color: white;" href="Pages/añadirRoles.php">Roles</a></li>
               </ul>
           </div>
       </div>
