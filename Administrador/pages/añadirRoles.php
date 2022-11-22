@@ -1,14 +1,12 @@
-<?php session_start();
-include('../../php/validar_sesion.php'); ?>
+<?php include('../../conexion/conexion.php'); $sql=null;$query=null;?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
-    <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Registro de articulos</title>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <title>Roles</title>
         <link rel="icon" href="../../img/icon_page.png">
         <link rel="stylesheet" href="../../CRUD-REGISTRO/dist/styles/style.css">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:600&display=swap" rel="stylesheet">
@@ -17,19 +15,13 @@ include('../../php/validar_sesion.php'); ?>
         <link rel="stylesheet" href="../../bootstrap.trabajo/css/bootstrap.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <!-- jQuery -->
-    <script type="text/javascript" 
+        <script type="text/javascript" 
         src="https://code.jquery.com/jquery-3.5.1.js">
     </script>
-  
     <!-- DataTables CSS -->
-    <link rel="stylesheet" href=
-"https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
-  
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
     <!-- DataTables JS -->
-    <script src=
-"https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js">
-    </script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <!-- Estilos de la caja xD -->    
     <style>
         .submit-hv:hover{
@@ -48,6 +40,7 @@ include('../../php/validar_sesion.php'); ?>
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" style="color: white;" href="../index.php">Inicio</a></li>
                             <li class="nav-item"><a class="nav-link active"  style="color: white;" aria-current="page" href="../CRUD.php">Personal</a></li>
+                            <li class="nav-item"><a class="nav-link" href="articulos.php" style="color: white;">Articulo</a></li>
                         </ul>
                     </div>
                 </div>
@@ -59,50 +52,50 @@ include('../../php/validar_sesion.php'); ?>
                 </ul>
             </nav>
             <!-- Aqui va el resto del codigo, tablas etc -->
-            <br><br>
+            <br>
         <h1 class="text-center">Control de articulos</h1>
-        <div class="container-fluid">
-            <div class="tablita">
-                            <table class="tabla" id="example" style="border:0;">
-                                <div class="container-fluid" style="padding:0;margin:0;"> 
-                                        <div class="row form-group">
-                                </div>
-                              <thead>
-                                <tr>
-                                  <th>Vigilante</th>
-                                  <th>Nombre</th> 
-                                  <th>Apellido</th>
-                                  <th>Documento</th>
-                                  <th>Rol</th>
-                                  <th>Articulo</th>
-                                  <th>Observaciones</th>
-                                  <th>Fecha</th>
-                                  <th>Datos-Entrada</th>
-                                  <th>Datos-Salida</th>
-                                
-                                </tr>
-                              </thead>
-                                <tbody><?php include('../../CRUD-REGISTRO/dist/php/consultas.php'); 
-                                while($row = mysqli_fetch_array($query)){ ?>
-                                <tr>
-                                <td><?php echo $row['usuario'];?></td>
-                                <td><?php echo $row['nombre'];?></td>
-                                <td><?php echo $row['apellido']; ?></td>
-                                <td><?php echo $row['documento'];?></td>
-                                <td><?php $rol = $row['Roles']; ?></td>
-                                <td><?php echo $row['articulo'];?></td>
-                                <td><?php echo $row['observaciones'];?></td>
-                                <td><?php echo $row['fecha'];?></td>
-                                <td><?php echo $row['datos_entrada'];?></td>
-                                <td><?php echo $row['datos_salida'];?></td>
-                                </tr>
-                                <?php }?>
-                                </tbody>
-                            </table>
-                          </div>
-                          <br/>            
-                          <div>
+        <hr>
+        <div class="card text-center" style="margin-top:20px;margin-left:20px;margin-right:20px;">
+            <form method="POST">
+                <div class="row"style="margin-left:5px;margin-right:5px;">
+                    <div class="card-header">
+                        <h2>Ingresar Roles</h2>
                     </div>
+                    <div class="card-body">
+                        <div class="col-lg-12">
+                            <label for="" class="label-control">Ingresa un nuevo rol:</label>
+                            <input type="text" class="form-control" placeholder="Ingresa el rol" name="agg_rol_btn" id="agg_rol" value="">
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="col-lg-12">
+                            <button type="button" id="buscar" onclick="" class="submit submit-hv agg_rol_btn" style="border-radius:10px;">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container d-flex justify-content-center mt-3">
+            <div class="card" style="width: 50rem;">
+                <div class="card-body">
+                    <div class="tablita">
+                        <table class="tabla" id="example" style="border:0;">
+                            <div class="container-fluid" style="padding:0;margin:0;"> 
+                                <div class="row form-group">
+                            </div>
+                            <thead>
+                            <tr><th>Roles</th></tr>
+                            </thead>
+                            <tbody><?php $SQL = "SELECT * FROM roles ORDER BY id;";$query = mysqli_query($conexion,$SQL);
+                            while($row = mysqli_fetch_array($query)){ ?>
+                            <tr>
+                                <td><?php echo $row['descripcion'] ?></td>
+                            </tr>
+                            <?php  }?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -125,6 +118,26 @@ include('../../php/validar_sesion.php'); ?>
                     }
                 });
             });
+        </script>
+        <script>
+            añadirRol();
+            function añadirRol() {
+                $(".agg_rol_btn").click(function(e) {
+                    e.preventDefault();
+                    var boton = $(this)[0];
+                    boton.blur();
+                    let rol = $('#agg_rol').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "../php/agregar_rol.php",
+                        data: 'agg_rol='+rol,
+                        success: function(data){
+                            alert(data, 1);
+                            window.location.reload();
+                        }
+                    });          
+                });
+            }
         </script> 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>

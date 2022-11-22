@@ -37,7 +37,7 @@ include('php/datetime.php');
         }
     </style>
     </head>
-    <body class="sb-nav-fixed">
+    <body class="sb-nav-fixed" onload="mandarFecha();">
         <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #57a639;">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-2" href="#" style="color: white;"><img src="../../img/logo_sena_blanco.png" height="60" alt="Logo de la pagina" /></a>
@@ -110,9 +110,9 @@ include('php/datetime.php');
                                         <form method="POST">
                                             <div class="col-lg-2">
                                                 <label>Fecha:</label>
-                                                <input type="date" name="fecha" id="fecha" value="<?php echo $fecha ?>">
+                                                <input type="date" name="fecha" id="fecha" onchange="mandarFecha()" value="<?php echo $fecha ?>"><!-- onchange="mandarFecha();" -->
                                                 <!-- <button class="form-control btn btn-primary">Filtrar</button> -->
-                                                <input class="form-control btn btn-primary btn-fecha" type="button" value="filtrar">
+                                                <!-- <input class="form-control btn btn-primary btn-fecha" type="button" value="filtrar"> -->
                                             </div>
                                         </form>
                                     </div>
@@ -221,11 +221,12 @@ include('php/datetime.php');
     </script>
     <script>
         $( document ).ready(function() {
+
             //php/buscarfecha.php
+            $("#fecha").on("change", mandarFecha);
             mandarFecha();
             function mandarFecha() {
-                $(".btn-fecha").click(function(e) {
-                    let fecha = $('#fecha').val();
+                let fecha = $('#fecha').val();
                     $.ajax({
                         type: "POST",
                         url: "php/buscarfecha.php",
@@ -236,8 +237,7 @@ include('php/datetime.php');
                             $("#mostrar-tabla").html(data);
                         }
                     });
-                });
-            }
+                }
         });
     </script>
     </body>
