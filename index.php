@@ -1,71 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap.trabajo/css/bootstrap.min.css">
-   <link rel="stylesheet" href="personal-css/boby.css"> 
-   <link rel="icon" href="img/icon_page.png">
-   <title>Login</title>
-</head>
-<body>
-    
-    <form method="post" action="php/ingreso.php">
-       
-    <div class="container">
-            <div class="text-center" style="margin-bottom:1.5%">
-                <img src="img/icon_page.png">
-            </div>
-        <div class="row" style="margin-left:33%">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="panel panel-login">
-                    <div class="panel-heading">
-                        <div class="">
-                            <div class="col-xs-12 text-center">
-                                <a href="#" class="active" id="login-form-link">Iniciar sesión</a>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/login_regist.css">
+
+    <style type="text/css">
+        .backgroundFondo{
+        background: url('assets/images/fondo.jpg') no-repeat center top;
+        background-size: cover;
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+    </style>
+  </head>
+<body class="backgroundFondo">
+    <?php // include('msjs.php'); ?>
+
+        <div class="container"> 
+            <div class="world-latest-articles">
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="form">
+                            <div id="signup">
+                                <h1 class="text-center" style="color: #333; font-weight: bold;">Iniciar Sesión</h1>
+                                <form action="php/ingreso.php" method="post">
+                                    <div class="field-wrap">
+                                        <label>Nro de documento</label>
+                                        <input type="number" name="username" required autocomplete="off"/>
+                                    </div>
+                                    <div class="field-wrap">
+                                        <label>Contraseña</label>
+                                        <input type="password" name="password" required autocomplete="off"/>
+                                    </div>
+                                    <input type="submit" class="button button-block mb-3 mt-5 miBtn mt-3" value="ENTRAR"/>
+                                    <a href="#" id="olvidar" title="Recuperar Clave">Recuperar Clave</a>
+                                    <br><br>          
+                                </form>
                             </div>
-                            
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form id="login-form" action="" method="post" role="form" style="display: block;">
-                                    <div class="form-group">
-                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
+                            <div id="recuperarclave">
+                                <h1 class="text-center mb-5 recuperarPass">Recuperar tu Clave</h1>
+                                <form action="#" method="post">
+                                    <div class="field-wrap">
+                                        <label>Nro de Documento</label>
+                                        <input type="number" name="Doc" required autocomplete="off"/>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Contraseña">
-                                    </div>
-                                    <div class="form-group text-center">
-                                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                                        <label for="remember"> Recordarme</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Iniciar sesión" style="background-color: #57a639; margin-left:50%">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="text-center">
-                                                    <a href="" class="forgot-password">¿Has olvidado tu contraseña?</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <input type="submit" class="button button-block miBtn mt-5" value="RECUPERAR CLAVE"/>
+                                    <a href="#" id="volver" class="mt-3 mb-4" title="Volver">Volver</a>
+                                    <br><br>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div> 
-    </div>
-    </form>
-</body>
+            </div>   
+        </div>
+
+
+
+
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $('#recuperarclave').hide(); 
+
+        $('#olvidar').on('click', function() {
+            $('#signup').hide(); //para ocultar
+            $("#recuperarclave").fadeIn("slow"); //mostrar
+        });
+
+        $('#volver').on('click', function() {
+            $('#recuperarclave').hide(); //para ocultar
+            $("#signup").fadeIn("slow"); //mostrar
+        });
+    </script>
+
+    
+  </body>
 </html>
