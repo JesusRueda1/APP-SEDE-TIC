@@ -84,12 +84,19 @@
                                 <div class="row form-group">
                             </div>
                             <thead>
-                            <tr><th>Roles</th></tr>
+                            <tr>
+                                <th>Roles</th>
+                                <th>Acciones</th>
+                            </tr>
+                            
                             </thead>
                             <tbody><?php $SQL = "SELECT * FROM roles ORDER BY id;";$query = mysqli_query($conexion,$SQL);
                             while($row = mysqli_fetch_array($query)){ ?>
                             <tr>
                                 <td><?php echo $row['descripcion'] ?></td>
+                                <div class="row">
+                                    <td class="col-lg-2"><a href="" class="btn btn-danger borrar" borrar-id="<?php echo $row['id'] ?>"> <span class="glyphicon glyphicon-trash"></span> Borrar</a></td>
+                                </div>
                             </tr>
                             <?php  }?>
                             </tbody>
@@ -136,6 +143,29 @@
                             window.location.reload();
                         }
                     });          
+                });
+            }
+        </script>
+        <script>
+            borrar();
+            function borrar() {
+                $(".borrar").click(function(e) {
+                    e.preventDefault();
+                    var id = $(this).attr("borrar-id");
+                    var boton = $(this)[0];
+                    boton.blur();
+
+                    if (confirm("¿Esta seguro que desea borrar a este rol?")) {
+                        $.ajax({
+                            type: "POST",
+                            url: "../php/borrar_rol.php",
+                            data: 'id='+id,
+                            success: function(data){
+                                alert(data, 1);
+                                window.location.reload();
+                            }
+                        });
+                    }          
                 });
             }
         </script> 
