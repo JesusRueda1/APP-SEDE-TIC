@@ -95,7 +95,7 @@
                             <tr>
                                 <td><?php echo $row['descripcion'] ?></td>
                                 <div class="row">
-                                    <td class="col-lg-2">
+                                    <td class="col-lg-3">
                                         <a href="" class="btn btn-danger borrar" borrar-id="<?php echo $row['id'] ?>"> <span class="glyphicon glyphicon-trash"></span> Borrar</a>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit_<?php echo $row['id'];?>">
                                             Editar
