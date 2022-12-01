@@ -41,7 +41,7 @@
                                         <input type="password" name="password" required autocomplete="off"/>
                                     </div>
                                     <input type="submit" class="button button-block mb-3 mt-5 miBtn mt-3" value="ENTRAR"/>
-                                    <a href="#" id="olvidar" title="Recuperar Clave">Recuperar Clave</a>
+                                    <!-- <a href="#" id="olvidar" title="Recuperar Clave">Recuperar Clave</a> -->
                                     <br><br>          
                                 </form>
                             </div>
