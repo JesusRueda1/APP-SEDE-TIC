@@ -1,4 +1,4 @@
-<?php include('../../conexion/conexion.php'); $sql=null;$query=null;?>
+<?php include('../../conexion/conexion.php'); $sql=null;$query=null; session_start(); include('../../php/validar_sesion.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
     <head>

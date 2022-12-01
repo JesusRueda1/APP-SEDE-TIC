@@ -13,7 +13,8 @@ include('../php/validar_admin.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar Contraseña</title>
     <link rel="stylesheet" href="../bootstrap.trabajo/css/bootstrap.min.css">
-    <link rel="icon" href="../../img/icon_page.png">
+    <link rel="stylesheet" href="../bootstrap.trabajo/js/bootstrap.min.js">
+    <link rel="icon" href="../img/icon_page.png">
     <style>
         body{background: url(../img/fondo.jpg) no-repeat;background-size: cover;}
     </style>
@@ -71,5 +72,7 @@ include('../php/validar_admin.php');
         </div>
         `;
     </script>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

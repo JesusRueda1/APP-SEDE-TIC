@@ -16,6 +16,10 @@
                 <a style="color: white;" class="nav-link" href="../Administrador/pages/añadirRoles.php">Administrar Roles</a>
             </li>
         </ul>
+        <a  style="margin-right:15px; margin-left:65%; color:white;" class="nav-link dropdown-toggle " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="../php/cerrar_sesion.php">Cerrar Sesión</a></li>
+        </ul>
     </div>
 </div>
 </nav>

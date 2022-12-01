@@ -75,10 +75,15 @@
               <td><?php echo $mostrar['apellido'] ?></td>
               <td><?php echo $mostrar['correo'] ?></td>
               <td><?php echo $mostrar['Roles'] ?></td>
-              <td>
-                <a href="" class="btn btn-danger borrar" borrar-id="<?php echo $mostrar['id_persona'] ?>"> <span class="glyphicon glyphicon-trash"></span> Borrar</a>
-              </td>
-              <?php //include('include/BorrarEditarModal.php')?>
+              <?php if ($mostrar['Roles']=="administrador") {?>
+                <td>
+                  <a href="#" class="btn btn-secondary" readonly>No Disponible</a>
+                </td>
+              <?php }else{ ?>
+                <td>
+                  <a href="" class="btn btn-danger borrar" borrar-id="<?php echo $mostrar['id_persona'] ?>"> <span class="glyphicon glyphicon-trash"></span> Borrar</a>
+                </td>
+              <?php }?>
             </tr>
             <?php
             }
