@@ -1,7 +1,7 @@
 <?php 
 include('../../conexion/conexion.php');
 $fecha = $_POST['fecha'];
-$SQL = "SELECT articulo.`usuario`, articulo.`id` as ID, articulo.`id_persona`as id_persona,persona.`nombre`as nombre,persona.`apellido` as apellido,
+$SQL = "SELECT articulo.`usuario` as vigilante, articulo.`id` as ID, articulo.`id_persona`as id_persona,persona.`nombre`as nombre,persona.`apellido` as apellido,
 persona.`documento`as documento,persona.`rol`as rol,`articulo`.`articulo`as articulo,articulo.`fecha`as fecha, articulo.`datos_entrada`as datos_entrada,
 articulo.`datos_salida`as datos_salida,articulo.`observaciones`as observaciones , roles.descripcion AS Roles 
 FROM articulo 
@@ -15,6 +15,7 @@ if(mysqli_num_rows($query)>0){?>
                 <div class="row form-group">
         </div>
         <thead> 
+            <th>Vigilante</th> 
             <th>Nombres</th> 
             <th>Apellido</th>
             <th>Documento</th>
@@ -28,6 +29,7 @@ if(mysqli_num_rows($query)>0){?>
         <tbody><?php
         while($row = mysqli_fetch_array($query)){ ?>
         <tr>
+            <td><?php echo $row['vigilante'];?></td>
             <td><?php echo $row['nombre'];?></td>
             <td><?php echo $row['apellido']; ?></td>
             <td><?php echo $row['documento'];?></td>
@@ -47,6 +49,7 @@ if(mysqli_num_rows($query)>0){?>
                 <div class="row form-group">
         </div>
         <thead> 
+            <th>Vigilante</th> 
             <th>Nombre</th> 
             <th>Apellido</th>
             <th>Documento</th>
@@ -60,6 +63,7 @@ if(mysqli_num_rows($query)>0){?>
         <tbody><?php
         while($row = mysqli_fetch_array($query)){ ?>
         <tr>
+            <td><?php echo $row['vigilante'];?></td>
             <td><?php echo $row['nombre'];?></td>
             <td><?php echo $row['apellido']; ?></td>
             <td><?php echo $row['documento'];?></td>
