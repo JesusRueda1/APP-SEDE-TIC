@@ -1,6 +1,6 @@
 <?php session_start();
-$nombreCompleto = $_SESSION['nombre_ingreso']." ".$_SESSION['apellido_ingreso'];
-include('../../php/validar_sesion.php');
+    include('./include/nombre_session.php');
+    include('../../php/validar_sesion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">

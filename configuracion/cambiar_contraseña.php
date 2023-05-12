@@ -20,15 +20,7 @@ include('../php/validar_admin.php');
     </style>
 </head>
 <body>
-<?php switch ($_SESSION['rol_ingreso']) {
-    case 1:
-        include('includes/navbar-admin.php');
-        break;
-    case 2:
-        include('includes/navbar.php');
-        break;
-    }
-?>
+<?php include('./includes/switch_case_rol.php'); ?>
     <div class="container" style="margin-top:10%; width:30%;">
         <div class="card shadow p-3 mb-5 bg-body rounded" style="background:#ffffffd0 !important">
             <div class="card-header">

@@ -67,9 +67,11 @@ include('../../CRUD-REGISTRO/dist/php/datetime.php'); ?>
             <div class="tablita dataTable-container mt-5">
                 <div class="row">
                     <form method="POST">
-                        <div class="col-lg-2">
-                            <label>Fecha:</label>
-                            <input type="date" name="fecha" id="fecha" onchange="mandarFecha()" value="<?php echo $fecha ?>">
+                        <div class="col-lg-12">
+                            <div class="col-sm-2">
+                                <label>Fecha:</label>
+                                <input class="form-control" type="date" name="fecha" id="fecha" onchange="mandarFecha()" value="<?php echo $fecha ?>">
+                            </div>
                         </div>
                     </form>
                 </div>
