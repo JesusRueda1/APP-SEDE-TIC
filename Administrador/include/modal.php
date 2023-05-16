@@ -6,7 +6,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <form method="POST" action="include/nuevoRegistro.php">
+        <form id="soloNumeros" method="POST" action="include/nuevoRegistro.php">
 				<div class="row form-group">
 					<div class="col-sm-2">
 						<label class="control-label" style="position:relative; top:7px;">Nombres:</label>
@@ -28,7 +28,7 @@
 						<label class="control-label" style="position:relative; top:7px;">Documento:</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="Documento" class="form-control" name="Doc">
+						<input id="doc" type="Documento" class="form-control" name="Doc">
 					</div>
 				</div>
         <div class="row form-group">

@@ -28,56 +28,51 @@
     <?php // include('msjs.php');
     ?>
 
-    <div class="container">
-        <div class="world-latest-articles">
-            <div class="row">
-                <div class="col-12 col-lg-12">
-                    <div class="form">
-                        <div id="signup">
-                            <h1 class="text-center" style="color: #333; font-weight: bold;">Iniciar Sesión</h1>
-                            <form action="php/ingreso.php" method="post">
-                                <div class="text-center">
-                                    <label>Documento</label>
-                                    <input type="number" name="username" required autocomplete="off" />
-                                </div>
-                                <div class="text-center">
-                                    <label>Contraseña</label>
-                                    <input type="password" name="password" required autocomplete="off" />
-                                </div>
-                                <div clas="text-center">
-                                    <div class="container">
-                                        <div class="col-md-12">
-                                            <input type="submit" class="btn btn-outline-dark mt-3 mb-4" value="INGRESAR" />
-                                        </div>
+        <div class="container"> 
+            <div class="world-latest-articles">
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="form">
+                            <div id="signup">
+                                <h1 class="text-center" style="color: #333; font-weight: bold;">Iniciar Sesión</h1>
+                                <form action="php/ingreso.php" method="post">
+                                    <div class="field-wrap">
+                                        <label>Nro de documento</label>
+                                        <input type="number" name="username" required autocomplete="off"/>
                                     </div>
-                                </div>
-                                <!-- <a href="#" id="olvidar" title="Recuperar Clave">Recuperar Clave</a> -->
-                            </form>
-                        </div>
-                        
-                        <div id="recuperarclave">
-                            <h1 class="text-center mb-5 recuperarPass">Recuperar tu Clave</h1>
-                            <form action="#" method="post">
-                                <div class="field-wrap">
-                                    <label>Nro de Documento</label>
-                                    <input type="number" name="Doc" required autocomplete="off" />
-                                </div>
-                                <input type="submit" class="button button-block miBtn mt-5" value="RECUPERAR CLAVE" />
-                                <a href="#" id="volver" class="mt-3 mb-4" title="Volver">Volver</a>
-                            </form>
+                                    <div class="field-wrap">
+                                        <label>Contraseña</label>
+                                        <input type="password" name="password" required autocomplete="off"/>
+                                    </div>
+                                    <input type="submit" class="button button-block mb-3 mt-5 miBtn mt-3" value="ENTRAR"/>
+                                    <!-- <a href="#" id="olvidar" title="Recuperar Clave">Recuperar Clave</a> -->
+                                    <br><br>          
+                                </form>
+                            </div>
+                            <div id="recuperarclave">
+                                <h1 class="text-center mb-5 recuperarPass">Recuperar tu Clave</h1>
+                                <form action="#" method="post">
+                                    <div class="field-wrap">
+                                        <label>Nro de Documento</label>
+                                        <input type="number" name="Doc" required autocomplete="off"/>
+                                    </div>
+                                    <input type="submit" class="button button-block miBtn mt-5" value="RECUPERAR CLAVE"/>
+                                    <a href="#" id="volver" class="mt-3 mb-4" title="Volver">Volver</a>
+                                    <br><br>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>   
         </div>
-    </div>
 
 
 
 
     <script src="assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
-        $('#recuperarclave').hide();
+        $('#recuperarclave').hide(); 
 
         $('#olvidar').on('click', function() {
             $('#signup').hide(); //para ocultar

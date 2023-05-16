@@ -67,16 +67,18 @@
 
   
     
-    <?php include('include/modal.php'); ?>
-    <script src="../bootstrap.trabajo/js/bootstrap.min.js"></script>
-    <script src="./js/modal_crud.js"></script>
-    <!--  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <!--  -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
-<script src="./js/modal_crud.js"></script>
+  <?php include('include/modal.php'); ?>
+  <script src="../bootstrap.trabajo/js/bootstrap.min.js"></script>
+
+  <!--  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <!--  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Scripts propios -->
+  <script src="js/scripts.js"></script>
+  <script src="./js/modal_crud.js"></script>
+  <script src="./js/crud.js"></script>
 </body>
 </html>

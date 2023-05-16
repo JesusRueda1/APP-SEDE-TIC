@@ -76,7 +76,7 @@
                                 </header>
                                 <br>
                                 <div class="containter-fluid" >
-                                    <form method="POST">
+                                    <form method="POST" id='soloNumeros'>
                                         <div class="row">
                                             <div class="col-lg-2">
                                                 <input type="text" class="form-control" placeholder="Documento" name="documento" id="document" value="<?php echo $doc?>">

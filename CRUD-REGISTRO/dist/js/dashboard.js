@@ -8,6 +8,18 @@ $(document).ready(function () {
              "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         }
     });
+    Formulario = document.querySelector('#soloNumeros');
+    Formulario.document.addEventListener('keypress', function (e){
+        if (!soloNumeros(event)){
+        e.preventDefault();
+    }
+    })
+    
+    //Solo permite introducir numeros.
+    function soloNumeros(e){
+        var key = e.charCode;
+        return key >= 48 && key <= 57;
+    }
 });
 
 ejecutar();
