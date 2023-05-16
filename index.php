@@ -31,16 +31,16 @@
                         <div class="form">
                             <div id="signup">
                                 <h1 class="text-center" style="color: #333; font-weight: bold;">Iniciar Sesión</h1>
-                                <form action="php/ingreso.php" method="post">
+                                <form name='miFormulario' id='soloNumeros'action="php/ingreso.php" method="post">
                                     <div class="field-wrap">
                                         <label>Nro de documento</label>
-                                        <input type="number" name="username" required autocomplete="off"/>
+                                        <input id="idcodigo" type="text" name="username" required autocomplete="off">
                                     </div>
                                     <div class="field-wrap">
                                         <label>Contraseña</label>
-                                        <input type="password" name="password" required autocomplete="off"/>
+                                        <input type="password" name="password" required autocomplete="off">
                                     </div>
-                                    <input type="submit" class="button button-block mb-3 mt-5 miBtn mt-3" value="ENTRAR"/>
+                                    <input type="submit" class="button button-block mb-3 mt-5 miBtn mt-3" value="ENTRAR">
                                     <!-- <a href="#" id="olvidar" title="Recuperar Clave">Recuperar Clave</a> -->
                                     <br><br>          
                                 </form>
@@ -67,19 +67,7 @@
 
 
     <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-        $('#recuperarclave').hide(); 
-
-        $('#olvidar').on('click', function() {
-            $('#signup').hide(); //para ocultar
-            $("#recuperarclave").fadeIn("slow"); //mostrar
-        });
-
-        $('#volver').on('click', function() {
-            $('#recuperarclave').hide(); //para ocultar
-            $("#signup").fadeIn("slow"); //mostrar
-        });
-    </script>
+    <script src="./assets/js/index.js"></script>
 
     
   </body>
