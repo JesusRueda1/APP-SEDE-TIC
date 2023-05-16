@@ -25,8 +25,7 @@
 </head>
 
 <body class="backgroundFondo">
-    <?php // include('msjs.php');
-    ?>
+    <?php // include('msjs.php');?>
 
         <div class="container"> 
             <div class="world-latest-articles">
@@ -35,10 +34,10 @@
                         <div class="form">
                             <div id="signup">
                                 <h1 class="text-center" style="color: #333; font-weight: bold;">Iniciar Sesión</h1>
-                                <form action="php/ingreso.php" method="post">
+                                <form id="soloNumeros" action="php/ingreso.php" method="post">
                                     <div class="field-wrap">
                                         <label>Nro de documento</label>
-                                        <input type="number" name="username" required autocomplete="off"/>
+                                        <input type="text" name="username" required autocomplete="off">
                                     </div>
                                     <div class="field-wrap">
                                         <label>Contraseña</label>
@@ -71,19 +70,7 @@
 
 
     <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-        $('#recuperarclave').hide(); 
-
-        $('#olvidar').on('click', function() {
-            $('#signup').hide(); //para ocultar
-            $("#recuperarclave").fadeIn("slow"); //mostrar
-        });
-
-        $('#volver').on('click', function() {
-            $('#recuperarclave').hide(); //para ocultar
-            $("#signup").fadeIn("slow"); //mostrar
-        });
-    </script>
+    <script src="./assets/js/index.js"></script>
 
 
 </body>
