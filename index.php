@@ -22,13 +22,13 @@
         }
     </style>
 </head>
-<body class="backgroundFondo">
+<body>
     <?php // include('msjs.php');?>
     <div class="container"> 
         <div class="world-latest-articles">
             <div class="row">
                 <div class="col-12 col-lg-12">
-                    <div class="form">
+                    <div class="form border">
                         <div id="signup">
                             <h1 class="text-center" style="color: #333; font-weight: bold;">Iniciar Sesión</h1>
                             <form id="soloNumeros" action="php/ingreso.php" method="post">
