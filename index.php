@@ -46,7 +46,7 @@
                             </form>
                         </div>
                         <div id="recuperarclave">
-                            <h1 class="text-center mb-5 recuperarPass">Recuperar tu Clave</h1>
+                            <h1 class="text-center mb-5 recuperarPass">Recuperar Contraseña</h1>
                             <form action="#" method="post">
                                 <div class="field-wrap">
                                     <label>Nro de Documento</label>

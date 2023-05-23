@@ -46,7 +46,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="background-color:#57a639;">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading" style="color: white;">INICIO</div>
+                            <div class="sb-sidenav-menu-heading" style="color: white;">Inicio</div>
                             <a style="color: white;" class="nav-link" href="inicio.php">
                                 <div class="sb-nav-link-icon" style="color: white;"><i class="fas fa-tachometer-alt"></i></div>
                                 INICIO
