@@ -45,7 +45,7 @@
                             <div class="sb-sidenav-menu-heading" style="color: white;">Inicio</div>
                             <a style="color: white;" class="nav-link" href="#">
                                 <div class="sb-nav-link-icon" style="color: white;"><i class="fas fa-tachometer-alt"></i></div>
-                                INICIO
+                                Iicio
                             </a>    
                             <div class="sb-sidenav-menu-heading" style="color: white;">Principal</div>
                             <a class="nav-link" href="DASHBOARD.php" style="color: white;">
@@ -115,11 +115,11 @@
                                         <div class="d-flex align-items-center justify-content-between standar">
                                             <div class="text-muted">Copyright &copy; Hecho por Jesús Rueda y Jesús Mosquera</div>
                                             <div>
-                                                <a href="#">Privacy Policy</a>
+                                                <a href="#">Politicas de privacidad</a>
                                                 &middot;
                                                 <a href="#">SENA</a>
                                                 &middot;
-                                                <a href="#">Terms &amp; Conditions</a>
+                                                <a href="#">Terminos &amp; Codiciones</a>
                                             </div>
                                         </div>
                                     </div>

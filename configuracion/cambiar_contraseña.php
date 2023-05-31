@@ -24,7 +24,7 @@ include('../php/validar_admin.php');
     <div class="container" style="margin-top:10%; width:30%;">
         <div class="card shadow p-3 mb-5 bg-body rounded" style="background:#ffffffd0 !important">
             <div class="card-header">
-                <h3 class="text-center card-title">Cambiar contraseña</h3>
+                <h3 class="text-center card-title">Cambiar Contraseña</h3>
             </div>
             <div class="row">
                 
@@ -33,7 +33,7 @@ include('../php/validar_admin.php');
                     <form action="../php/cambiar_contraseña.php" method="POST">
                         <div id="error"></div>
                         <div class="col-lg">
-                            <label>Ingrese su contraseña:</label>
+                            <label>Digite su contraseña:</label>
                             <input type="password" class="form-control"id="pass1"name="pass1" required>
                         </div>
                         <div class="col-lg">

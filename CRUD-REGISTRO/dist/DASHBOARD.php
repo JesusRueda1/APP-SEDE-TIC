@@ -109,13 +109,13 @@
                                 <footer class="py-4 bg-light mt-auto">
                                     <div class="container px-12">
                                         <div class="d-flex align-items-center justify-content-between standar">
-                                            <div class="text-muted">Copyright &copy; Hecho por Jesús Rueda y Jesús Mosquera</div>
+                                            <div class="text-muted">Copyright &copy; Hecho por Jesús Mosquera Jesús y Rueda  </div>
                                             <div>
-                                                <a href="#">Privacy Policy</a>
+                                                <a href="#">Politicas de privacidad</a>
                                                 &middot;
                                                 <a href="#">SENA</a>
                                                 &middot;
-                                                <a href="#">Terms &amp; Conditions</a>
+                                                <a href="#">Terminos &amp; Codiciones</a>
                                             </div>
                                         </div>
                                     </div>
