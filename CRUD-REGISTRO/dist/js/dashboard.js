@@ -62,22 +62,22 @@ ejecutar();
             });
         }
 
-        $( document ).ready(function() {
+    $( document ).ready(function() {
 
-            //php/buscarfecha.php
-            $("#fecha").on("change", mandarFecha);
-            mandarFecha();
-            function mandarFecha() {
-                let fecha = $('#fecha').val();
-                    $.ajax({
-                        type: "POST",
-                        url: "php/buscarfecha.php",
-                        data: {
-                            'fecha': fecha,
-                        },
-                        success: function(data){
-                            $("#mostrar-tabla").html(data);
-                        }
-                    });
-                }
-        });
+        //php/buscarfecha.php
+        $("#fecha").on("change", mandarFecha);
+        mandarFecha();
+        function mandarFecha() {
+            let fecha = $('#fecha').val();
+                $.ajax({
+                    type: "POST",
+                    url: "php/buscarfecha.php",
+                    data: {
+                        'fecha': fecha,
+                    },
+                    success: function(data){
+                        $("#mostrar-tabla").html(data);
+                    }
+                });
+            }
+    });
