@@ -1,11 +1,15 @@
 var Fila = null
 function onSubmit() {
+
 let DataForm = Leer()
+
 if (Fila == null){
-InsertarDatos(DataForm)
+
+    InsertarDatos(DataForm)
 } else{
-Actualizar(DataForm)
-Vaciar()
+
+    Actualizar(DataForm)
+    Vaciar()
 }
 }
 function Leer() {
